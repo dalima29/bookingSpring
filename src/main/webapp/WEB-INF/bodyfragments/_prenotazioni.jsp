@@ -31,7 +31,7 @@
 									<th>Fine</th>
 								</tr>
 							</thead>
-							<tbody>
+<!--  							<tbody>
 								<tr class="odd gradeX">
 									<td align="center">Macchina</td>
 									<td align="center">Toyota Yaris</td>
@@ -56,7 +56,7 @@
 									<td align="center">25-12-2018 09:00</td>
 									<td align="center">25-12-2018 11:00</td>
 								</tr>
-							</tbody>
+							</tbody>-->
 						</table>
 						<!-- /.table-responsive -->
 					</div>
@@ -90,7 +90,15 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+            "ajax": "dati/prenotazioni.json",
+           	"columns": [
+                    { "data": "risorsa" },
+                    { "data": "nome" },
+                    { "data": "utente" },
+                    { "data": "nome prenotazione" },
+                    { "data": "inizio" },
+                    { "data": "fine" }
+        ]
         });
     });
     </script>

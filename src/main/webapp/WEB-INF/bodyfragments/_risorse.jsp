@@ -30,14 +30,14 @@
 							class="table table-striped table-bordered table-hover"
 							id="dataTables-example">
 							<thead>
-								<tr>
+  								<tr>
 									<th>Risorsa</th>
 									<th>Nome</th>
 									<th>Limite</th>
 									<th></th>
 								</tr>
 							</thead>
-							<tbody>
+<!--  							<tbody>
 								<tr class="odd gradeX">
 									<td align="center">Macchina</td>
 									<td align="center">Toyota Yaris</td>
@@ -74,7 +74,7 @@
 											<i class="fa fa-trash-o"></i>
 										</button></td>
 								</tr>
-							</tbody>
+							</tbody>-->
 						</table>
 						<!-- /.table-responsive -->
 					</div>
@@ -108,7 +108,14 @@
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-            responsive: true
+        	"ajax":"dati/risorse.json",
+               	"columns": [
+                    { "data": "risorsa" },
+                    { "data": "nome" },
+                    { "data": "limite" },
+                    { defaultContent : '<a href="${pageContext.request.contextPath}/modifica-risorsa"><button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i></button></a><button type="button" class="btn btn-default btn-circle"><i class="fa fa-trash-o"></i></button>'}
+        ]
+
         });
     });
     </script>
