@@ -40,7 +40,7 @@
 			<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span>
 			<span class="icon-bar"></span> <span class="icon-bar"></span>
 		</button>
-		<a class="navbar-brand" href=""${pageContext.request.contextPath}/_home.jsp">Amministratore</a>
+		<a class="navbar-brand" href="${pageContext.request.contextPath}/home">Amministratore</a>
 	</div>
 	<!-- /.navbar-header -->
 	<ul class="nav navbar-top-links navbar-right">
