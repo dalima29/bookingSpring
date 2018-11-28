@@ -32,11 +32,12 @@ public class MainController {
     public String prenotazioniPage(Model model) {
         return "prenotazioniPage";
     }
-    
+  
     @RequestMapping(value = { "/utenti" }, method = RequestMethod.GET)
     public String utentiPage(Model model) {
         return "utentiPage";
     }
+    
  
  /*    
     @RequestMapping(value = { "/contactus" }, method = RequestMethod.GET)
