@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+        
+<tiles-definitions>  
+ 
+    <!-- Base Define -->
+    <definition name="base.definition" 
+        template="/WEB-INF/layouts/classic.jsp">  
+        <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="/WEB-INF/basefragments/_header.jsp" />  
+        <put-attribute name="menu" value="/WEB-INF/basefragments/_menu.jsp" />  
+        <put-attribute name="body" value="" />  
+        <put-attribute name="footer" value="/WEB-INF/basefragments/_footer.jsp" />  
+    </definition>  
+ 
+    <!-- Home Page  -->
+    <definition name="homePage" extends="base.definition">  
+        <put-attribute name="title" value="Home Page" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/_home.jsp" />  
+    </definition>
+    
+        <!-- Risorse Page  -->
+    <definition name="risorsePage" extends="base.definition">  
+        <put-attribute name="title" value="Risorse Page" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/_risorse.jsp" />  
+    </definition>
+     
+            <!-- Aggiungi Risorsa Page  -->
+    <definition name="aggiungi-risorsaPage" extends="base.definition">  
+        <put-attribute name="title" value="Aggiungi Risorsa Page" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/_aggiungi-risorsa.jsp" />  
+    </definition>
+    
+                <!-- Modifica Risorsa Page  -->
+    <definition name="modifica-risorsaPage" extends="base.definition">  
+        <put-attribute name="title" value="Modifica Risorsa Page" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/_modifica-risorsa.jsp" />  
+    </definition> 
+    
+            <!-- Prenotazioni Page  -->
+    <definition name="prenotazioniPage" extends="base.definition">  
+        <put-attribute name="title" value="Prenotazioni Page" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/_prenotazioni.jsp" />  
+    </definition>
+    
+                <!-- Utenti Page  -->
+    <definition name="utentiPage" extends="base.definition">  
+        <put-attribute name="title" value="Utenti Page" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/_utenti.jsp" />  
+    </definition>
+ 
+  
+</tiles-definitions> 
