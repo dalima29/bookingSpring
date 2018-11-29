@@ -1,12 +1,22 @@
 package it.ariadne.bookingspring.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import it.ariadne.bookingspring.dao.RisorsaDAO;
+import it.ariadne.bookingspring.entity.Macchina;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	RisorsaDAO risorsaDAO;
  
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
     public String homePage(Model model) {
@@ -38,7 +48,16 @@ public class MainController {
         return "utentiPage";
     }
     
+/* 
+    @ResponseBody
+    @RequestMapping(value= {"/getrisorselist"},method = RequestMethod.GET)
+    public String index() {
  
+        System.out.println("11111");
+        List<Macchina> lista= (List<Macchina>) risorsaDAO.findAll();
+        String pippo = new Gson().toJson(lista);
+        return pippo;
+    }*/
  /*    
     @RequestMapping(value = { "/contactus" }, method = RequestMethod.GET)
     public String contactusPage(Model model) {

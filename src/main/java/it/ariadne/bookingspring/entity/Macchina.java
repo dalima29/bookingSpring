@@ -24,6 +24,11 @@ public class Macchina implements Risorsa {
 	
 	public Macchina () {
 	}
+	
+	public Macchina (String nome, int limite) {
+		this.limite = limite;
+		this.nome = nome;
+	}
 	@Override
     public Long getId() {
         return id;

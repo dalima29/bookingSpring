@@ -22,7 +22,7 @@
 							class="table table-striped table-bordered table-hover"
 							id="dataTables-example">
 							<thead>
-								<tr>
+							<tr>
 									<th>Risorsa</th>
 									<th>Nome</th>
 									<th>Utente</th>
@@ -30,6 +30,12 @@
 									<th>Inizio</th>
 									<th>Fine</th>
 								</tr>
+										<!--  					<tr>
+									<th>Id</th>
+									<th>Limite</th>
+									<th>Nome</th>
+									<th>Tipo</th>
+								</tr>-->
 							</thead>
 <!--  							<tbody>
 								<tr class="odd gradeX">
@@ -87,7 +93,6 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <!--  
     <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
@@ -102,19 +107,19 @@
         ]
         });
     });
-    </script>-->
-    
+    </script>
+    <!-- 
     <script>
     $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            "sajax": "/listaPrenotazioni",
-           	"columns": [
-                    { "mdata": "risorsa" },
+        var table = $('#dataTables-example').DataTable({
+            "sAjaxSource": "/getrisorselist",
+			"sAjaxDataProp": "",
+			"order": [[ 0, "asc" ]],
+           	"aocolumns": [
+                    { "mdata": "id" },
+                    { "mdata": "limite" },
                     { "mdata": "nome" },
-                    { "mdata": "utente" },
-                    { "mdata": "nome prenotazione" },
-                    { "mdata": "inizio" },
-                    { "mdata": "fine" }
+                    { "mdata": "tipo" }
         ]
         });
     });
