@@ -30,11 +30,11 @@
 							class="table table-striped table-bordered table-hover"
 							id="dataTables-example">
 							<thead>
-  								<tr>
-									<th>Risorsa</th>
-									<th>Nome</th>
+								<tr>
+								<th>Id</th>
 									<th>Limite</th>
-									<th></th>
+									<th>Nome</th>
+									<th>Risorsa</th>
 								</tr>
 							</thead>
 <!--  							<tbody>
@@ -105,15 +105,15 @@
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
+        <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-        	"ajax":"dati/risorse.json",
+        	"ajax":"/getrisorselist",
                	"columns": [
-                    { "data": "risorsa" },
-                    { "data": "nome" },
+                    { "data": "id" },
                     { "data": "limite" },
-                    { defaultContent : '<a href="${pageContext.request.contextPath}/modifica-risorsa"><button type="button" class="btn btn-default btn-circle"><i class="fa fa-pencil"></i></button></a><button type="button" class="btn btn-default btn-circle"><i class="fa fa-trash-o"></i></button>'}
+                    { "data": "nome" },
+                    { "data": "tipo"}
         ]
 
         });

@@ -1,5 +1,6 @@
 package it.ariadne.bookingspring.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.ariadne.bookingspring.dao.RisorsaDAO;
 import it.ariadne.bookingspring.entity.Macchina;
+import it.ariadne.bookingspring.utils.TableResponse;
 
 @Controller
 public class MainController {
 	
 	@Autowired
 	RisorsaDAO risorsaDAO;
+	@Autowired
+	TableResponse tableResponse;
  
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
     public String homePage(Model model) {
@@ -46,6 +50,18 @@ public class MainController {
     @RequestMapping(value = { "/utenti" }, method = RequestMethod.GET)
     public String utentiPage(Model model) {
         return "utentiPage";
+    }
+    
+    @ResponseBody
+    @RequestMapping(value= {"/getrisorselist"},method = RequestMethod.GET)
+    public TableResponse index() {
+        ArrayList<Macchina> all = (ArrayList<Macchina>) risorsaDAO.findAll();
+        tableResponse.setDraw(0);
+        tableResponse.setData(all);
+        tableResponse.setRecordsFiltered(all.size());
+        tableResponse.setRecordsTotal(all.size());
+ 
+        return tableResponse;
     }
     
 /* 

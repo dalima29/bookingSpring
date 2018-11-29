@@ -3,6 +3,7 @@ package it.ariadne.bookingspring.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 public class Macchina implements Risorsa {
 	
 	@Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
     private Long id;
 	@Column(name = "Limite", nullable = false)

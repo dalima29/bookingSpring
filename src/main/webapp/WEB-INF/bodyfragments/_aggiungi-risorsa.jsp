@@ -4,6 +4,9 @@
 <title>Aggiungi-risorsa</title>
 </head>
 <body>
+<%String name = (String)session.getAttribute("name");
+String error = (String)session.getAttribute("errore");
+%>
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">
@@ -19,7 +22,8 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form role="form" action="risorse.html">
+							<font color="red"><b><%=error!=null?error:""%></b></font>
+								<form role="form" method="POST" action="/myservlet">
 									<div class="form-group">
 										<label>Tipo Risorsa</label> <select class="form-control"
 											required>
@@ -32,7 +36,8 @@
 									</div>
 									<div class="form-group">
 										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserisci testo" required>
+											placeholder="Inserisci testo" id="name" name="name" value
+											="<%=name !=null?name: "" %>"required>
 									</div>
 									<div class="form-group">
 										<label>Limite Risorsa</label> <input class="form-control"
