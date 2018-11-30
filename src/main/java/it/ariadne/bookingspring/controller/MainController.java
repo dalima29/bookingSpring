@@ -22,9 +22,14 @@ public class MainController {
 	@Autowired
 	TableResponse tableResponse;
  
-    @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/home" }, method = RequestMethod.GET)
     public String homePage(Model model) {
         return "homePage";
+    }
+    
+    @RequestMapping(value = { "/homeUtente" }, method = RequestMethod.GET)
+    public String homePageUtente(Model model) {
+        return "homePageUtente";
     }
     
     @RequestMapping(value = { "/risorse" }, method = RequestMethod.GET)
@@ -52,6 +57,21 @@ public class MainController {
         return "utentiPage";
     }
     
+    @RequestMapping(value = { "/cerca-disponibilita" }, method = RequestMethod.GET)
+    public String cercaDisponibilitaPage(Model model) {
+        return "cercaDisponibilitaPage";
+    }
+    
+    @RequestMapping(value = { "/cronologia-prenotazioni" }, method = RequestMethod.GET)
+    public String cronologiaPrenotazioniPage(Model model) {
+        return "cronologiaPrenotazioniPage";
+    }
+    
+    @RequestMapping(value = { "/prenotazioni-in-atto" }, method = RequestMethod.GET)
+    public String prenotazioniInAttoPage(Model model) {
+        return "prenotazioniInAttoPage";
+    }
+    
     @ResponseBody
     @RequestMapping(value= {"/getrisorselist"},method = RequestMethod.GET)
     public TableResponse index() {
@@ -64,16 +84,6 @@ public class MainController {
         return tableResponse;
     }
     
-/* 
-    @ResponseBody
-    @RequestMapping(value= {"/getrisorselist"},method = RequestMethod.GET)
-    public String index() {
- 
-        System.out.println("11111");
-        List<Macchina> lista= (List<Macchina>) risorsaDAO.findAll();
-        String pippo = new Gson().toJson(lista);
-        return pippo;
-    }*/
  /*    
     @RequestMapping(value = { "/contactus" }, method = RequestMethod.GET)
     public String contactusPage(Model model) {
