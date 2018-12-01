@@ -35,7 +35,8 @@
 									</div>
 									<div class="form-group">
 										<label>Periodo</label> <input class="form-control"
-											placeholder="Inserisci numero ore" required>
+											placeholder="Inserisci numero ore" type="number" min="1"
+											required>
 									</div>
 									<div class="form-group">
 										<label>Data inizio ricerca</label> <input class="form-control"
@@ -51,7 +52,7 @@
 									</div>
 									<div class="form-group">
 										<label>Limite</label> <input class="form-control"
-											placeholder="Inserisci limite" type="number">
+											placeholder="Inserisci limite" type="number" min="1">
 									</div>
 									<button type="submit" class="btn btn-primary">Verifica</button>
 									<button type="reset" class="btn btn-default">Reset</button>

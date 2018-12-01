@@ -41,7 +41,7 @@ String error = (String)session.getAttribute("errore");
 									</div>
 									<div class="form-group">
 										<label>Limite Risorsa</label> <input class="form-control"
-											placeholder="Inserisci numero" type="number" required>
+											placeholder="Inserisci numero" type="number" min="1" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Aggiungi</button>
 									<button type="reset" class="btn btn-default">Annulla</button>
