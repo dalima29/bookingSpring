@@ -30,9 +30,14 @@ public class DataInit implements ApplicationRunner {
             r1.setNome("Yaris");
             
             r1.setTipo("Macchina");
+            Macchina r2 = new Macchina();
+            r2.setLimite(4);
+            r2.setNome("Ferrari");
+            r2.setTipo("Macchina");
             //
  
             risorsaDAO.save(r1);
+            risorsaDAO.save(r2);
         }
  
     }

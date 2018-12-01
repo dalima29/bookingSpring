@@ -14,8 +14,8 @@ public class Macchina implements Risorsa {
 	
 	@Id
     @GeneratedValue (strategy = GenerationType.AUTO)
-    @Column(name = "Id", nullable = false)
-    private Long id;
+    @Column(name = "Id", nullable=false)
+    private long id;
 	@Column(name = "Limite", nullable = false)
 	private int limite;//numero posti macchina
 	@Column(name = "Nome", length=64, nullable = false)
@@ -31,11 +31,11 @@ public class Macchina implements Risorsa {
 		this.nome = nome;
 	}
 	@Override
-    public Long getId() {
+    public long getId() {
         return id;
     }
 	@Override
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 	@Override

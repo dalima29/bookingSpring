@@ -7,6 +7,6 @@ public interface Risorsa {
 	public void setTipo(String tipo);
 	public String getNome();
 	public void setNome(String nome);
-	public Long getId();
-	public void setId(Long id);
+	public long getId();
+	public void setId(long id);
 }

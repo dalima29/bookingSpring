@@ -35,6 +35,7 @@
 									<th>Limite</th>
 									<th>Nome</th>
 									<th>Risorsa</th>
+									<th></th>
 								</tr>
 							</thead>
 <!--  							<tbody>
@@ -113,7 +114,8 @@
                     { "data": "id" },
                     { "data": "limite" },
                     { "data": "nome" },
-                    { "data": "tipo"}
+                    { "data": "tipo"},
+                    { "defaultContent": '<a href="${pageContext.request.contextPath}/modifica-risorsa"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-pencil"></i> </button></a> <button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button>'}
         ]
 
         });
