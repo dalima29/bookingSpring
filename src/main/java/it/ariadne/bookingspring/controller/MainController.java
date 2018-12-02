@@ -116,14 +116,4 @@ public class MainController {
  
         return tableResponse;
     }
-    
- /*    
-    @RequestMapping(value = { "/contactus" }, method = RequestMethod.GET)
-    public String contactusPage(Model model) {
-        model.addAttribute("address", "Vietnam");
-        model.addAttribute("phone", "...");
-        model.addAttribute("email", "...");
-        return "contactusPage";
-    }
-     */
 }

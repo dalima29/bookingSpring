@@ -45,6 +45,11 @@
 		<put-attribute name="title" value="Login Page" />
 		<put-attribute name="body" value="/WEB-INF/login.jsp" />
 	</definition>
+		<!-- 403 Page -->
+	<definition name="403Page" extends="baselogin.definition">
+		<put-attribute name="title" value="403 Page" />
+		<put-attribute name="body" value="/WEB-INF/403Page.jsp" />
+	</definition>
 
 	<!-- Home Page -->
 	<definition name="homePage" extends="base.definition">
