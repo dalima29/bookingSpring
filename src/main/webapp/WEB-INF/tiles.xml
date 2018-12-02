@@ -6,6 +6,17 @@
 <tiles-definitions>
 
 	<!-- Base Define -->
+		<definition name="baselogin.definition"
+		template="/WEB-INF/layouts/classic.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="" />
+		<put-attribute name="menu"
+			value="" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/basefragments/_footer.jsp" />
+	</definition>
 	<definition name="base.definition"
 		template="/WEB-INF/layouts/classic.jsp">
 		<put-attribute name="title" value="" />
@@ -29,6 +40,12 @@
 			value="/WEB-INF/basefragments/_footerUtente.jsp" />
 	</definition>
 
+	<!-- Login Page -->
+	<definition name="loginPage" extends="baselogin.definition">
+		<put-attribute name="title" value="Login Page" />
+		<put-attribute name="body" value="/WEB-INF/login.jsp" />
+	</definition>
+
 	<!-- Home Page -->
 	<definition name="homePage" extends="base.definition">
 		<put-attribute name="title" value="Home Page" />
@@ -37,7 +54,8 @@
 	</definition>
 
 	<!-- Home Page Utente -->
-	<definition name="homePageUtente" extends="baseuser.definition">
+	<definition name="homePageUtente"
+		extends="baseuser.definition">
 		<put-attribute name="title" value="Home Page Utente" />
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_homeUtente.jsp" />

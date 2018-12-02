@@ -25,9 +25,8 @@ public class MainController {
 	@Autowired
 	TableResponse tableResponse;
 	
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = {"/","/login"}, method = RequestMethod.GET)
     public String loginPage(Model model) {
- 
         return "loginPage";
     }
  
