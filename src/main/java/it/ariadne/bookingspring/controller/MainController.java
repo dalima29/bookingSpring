@@ -1,7 +1,10 @@
 package it.ariadne.bookingspring.controller;
 
 import java.security.Principal;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.ariadne.bookingspring.dao.RisorsaDAO;
 import it.ariadne.bookingspring.entity.Risorsa;
+import it.ariadne.bookingspring.entity.RisorsaEnum;
 import it.ariadne.bookingspring.utils.TableResponse;
 import it.ariadne.bookingspring.utils.WebUtils;
 
@@ -25,7 +29,6 @@ public class MainController {
 	RisorsaDAO risorsaDAO;
 	@Autowired
 	TableResponse tableResponse;
-	private boolean verifica = true;
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String loginPage(Model model) {
@@ -117,5 +120,25 @@ public class MainController {
 		tableResponse.setRecordsTotal(all.size());
 
 		return tableResponse;
+	}
+
+	@RequestMapping(value = { "/admin/aggiungi-risorsa-DB" }, method = RequestMethod.POST)
+	public String aggiungiRisorsaDB(HttpServletRequest request, Model model) {
+		String error = "";
+		String nome = (String) request.getParameter("name");
+		int limite = Integer.parseInt(request.getParameter("limite"));
+		RisorsaEnum re = RisorsaEnum.valueOf(request.getParameter("tipo"));
+		Risorsa r = new Risorsa(nome, limite, re);
+		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
+		for (Risorsa ris : all) {
+			if (ris.getNome().equals(r.getNome())) {
+				error = "Non fare il furbo, la risorsa esiste già";
+			}
+		}
+		if (error.equals("")) {
+			risorsaDAO.save(r);
+		}
+		model.addAttribute("erroreNome", error);
+		return "risorsePage";
 	}
 }

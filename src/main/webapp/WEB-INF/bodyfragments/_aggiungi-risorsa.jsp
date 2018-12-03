@@ -23,10 +23,10 @@ String error = (String)session.getAttribute("errore");
 						<div class="row">
 							<div class="col-lg-12">
 							<font color="red"><b><%=error!=null?error:""%></b></font>
-								<form role="form" method="POST" action="/myservlet">
+								<form role="form" method="POST" action="${pageContext.request.contextPath}/admin/aggiungi-risorsa-DB">
 									<div class="form-group">
 										<label>Tipo Risorsa</label> <select class="form-control"
-											required>
+											name="tipo" id="tipo" required>
 											<option disabled selected value>Seleziona tipo
 												risorsa</option>
 											<option>Aula</option>
@@ -41,7 +41,8 @@ String error = (String)session.getAttribute("errore");
 									</div>
 									<div class="form-group">
 										<label>Limite Risorsa</label> <input class="form-control"
-											placeholder="Inserisci numero" type="number" min="1" required>
+											placeholder="Inserisci numero" id="limite"
+											name="limite" type="number" min="1" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Aggiungi</button>
 									<button type="reset" class="btn btn-default">Annulla</button>
