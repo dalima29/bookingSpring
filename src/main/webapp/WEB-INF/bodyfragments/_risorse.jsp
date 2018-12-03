@@ -109,7 +109,7 @@
         <script>
     $(document).ready(function() {
         $('#dataTables-example').DataTable({
-        	"ajax":"/getrisorselist",
+        	"ajax":"/admin/getrisorselist",
                	"columns": [
                     { "data": "id" },
                     { "data": "limite" },

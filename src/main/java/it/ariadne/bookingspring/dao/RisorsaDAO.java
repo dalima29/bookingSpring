@@ -8,11 +8,11 @@ import org.springframework.stereotype.Repository;
 import it.ariadne.bookingspring.entity.*;
 
 @Repository
-public interface RisorsaDAO extends CrudRepository<Macchina, Long>{
+public interface RisorsaDAO extends CrudRepository<Risorsa, Long>{
 	
-    public List<Macchina> findByNomeLike(String nome);
+    public List<Risorsa> findByNomeLike(String nome);
     
-    public List<Macchina> findByLimiteGreaterThan(int limite);
+    public List<Risorsa> findByLimiteGreaterThan(int limite);
 
 }
 

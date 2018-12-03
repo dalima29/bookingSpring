@@ -23,18 +23,17 @@ public class DataInit implements ApplicationRunner {
         long count = risorsaDAO.count();
  
         if (count == 0) {
-            Macchina r1 = new Macchina();
+            Risorsa r1 = new Risorsa();
  
             r1.setLimite(5);
  
             r1.setNome("Yaris");
             
-            r1.setTipo("Macchina");
-            Macchina r2 = new Macchina();
+            r1.setTipo(RisorsaEnum.MACCHINA);
+            Risorsa r2 = new Risorsa();
             r2.setLimite(4);
             r2.setNome("Ferrari");
-            r2.setTipo("Macchina");
-            //
+            r2.setTipo(RisorsaEnum.MACCHINA);
  
             risorsaDAO.save(r1);
             risorsaDAO.save(r2);

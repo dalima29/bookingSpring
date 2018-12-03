@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.ariadne.bookingspring.dao.RisorsaDAO;
-import it.ariadne.bookingspring.entity.Macchina;
+import it.ariadne.bookingspring.entity.Risorsa;
 import it.ariadne.bookingspring.utils.TableResponse;
 import it.ariadne.bookingspring.utils.WebUtils;
 
@@ -110,7 +110,7 @@ public class MainController {
 	@ResponseBody
 	@RequestMapping(value = { "/admin/getrisorselist" }, method = RequestMethod.GET)
 	public TableResponse index() {
-		ArrayList<Macchina> all = (ArrayList<Macchina>) risorsaDAO.findAll();
+		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		tableResponse.setDraw(0);
 		tableResponse.setData(all);
 		tableResponse.setRecordsFiltered(all.size());
