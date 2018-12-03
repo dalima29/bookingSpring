@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Macchina")
 
-public class Macchina implements Risorsa {
+public class Macchina implements RisorsaDACANCELLARE {
 	
 	@Id
     @GeneratedValue (strategy = GenerationType.AUTO)
