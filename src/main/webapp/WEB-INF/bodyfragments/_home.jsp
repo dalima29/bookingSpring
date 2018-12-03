@@ -25,7 +25,7 @@
 					</div>
 					<a href="#">
 						<div class="panel-footer">
-							<a href="${pageContext.request.contextPath}/prenotazioni"><span class="pull-left">Vedi
+							<a href="${pageContext.request.contextPath}/admin/prenotazioni"><span class="pull-left">Vedi
 									dettagli</span></a> <span class="pull-right"><i
 								class="fa fa-arrow-circle-right"></i></span>
 							<div class="clearfix"></div>
@@ -47,7 +47,7 @@
 					</div>
 					<a href="#">
 						<div class="panel-footer">
-							<a href="${pageContext.request.contextPath}/risorse"><span
+							<a href="${pageContext.request.contextPath}/admin/risorse"><span
 								class="pull-left">Vedi dettagli</span></a> <span class="pull-right"><i
 								class="fa fa-arrow-circle-right"></i></span>
 							<div class="clearfix"></div>

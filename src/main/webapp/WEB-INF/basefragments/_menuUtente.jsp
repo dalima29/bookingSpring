@@ -17,7 +17,7 @@
 						</span>
 					</div> <!-- /input-group -->
 				</li>
-				<li><a href="${pageContext.request.contextPath}/homeUtente"><i
+				<li><a href="${pageContext.request.contextPath}/user/homeUtente"><i
 						class="fa fa-dashboard fa-fw"></i> Dashboard</a></li>
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 						Charts<span class="fa arrow"></span></a>
@@ -25,11 +25,11 @@
 						<li><a href="flot.html">Flot Charts</a></li>
 						<li><a href="morris.html">Morris.js Charts</a></li>
 					</ul> <!-- /.nav-second-level --></li>
-				<li><a href="${pageContext.request.contextPath}/cerca-disponibilita"><i
+				<li><a href="${pageContext.request.contextPath}/user/cerca-disponibilita"><i
 						class="fa fa-search-plus fa-fw"></i> Cerca disponibilità</a></li>
-				<li><a href="${pageContext.request.contextPath}/prenotazioni-in-atto"><i
+				<li><a href="${pageContext.request.contextPath}/user/prenotazioni-in-atto"><i
 						class="fa fa-history fa-fw"></i> Prenotazioni correnti</a></li>
-				<li><a href="${pageContext.request.contextPath}/cronologia-prenotazioni"><i
+				<li><a href="${pageContext.request.contextPath}/user/cronologia-prenotazioni"><i
 						class="fa fa-th-list fa-fw"></i> Cronologia prenotazioni</a></li>
 				<li><a href="#"><i class="fa fa-wrench fa-fw"></i> UI
 						Elements<span class="fa arrow"></span></a>

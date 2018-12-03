@@ -28,7 +28,7 @@
 					</div>
 					<a href="#">
 						<div class="panel-footer">
-							<a href="${pageContext.request.contextPath}/prenotazioni-in-atto"><span class="pull-left">Vedi
+							<a href="${pageContext.request.contextPath}/user/prenotazioni-in-atto"><span class="pull-left">Vedi
 									dettagli</span></a> <span class="pull-right"><i
 								class="fa fa-arrow-circle-right"></i></span>
 							<div class="clearfix"></div>
@@ -50,7 +50,7 @@
 					</div>
 					<a href="#">
 						<div class="panel-footer">
-							<a href="${pageContext.request.contextPath}/cronologia-prenotazioni"><span class="pull-left">Vedi
+							<a href="${pageContext.request.contextPath}/user/cronologia-prenotazioni"><span class="pull-left">Vedi
 									dettagli</span></a> <span class="pull-right"><i
 								class="fa fa-arrow-circle-right"></i></span>
 							<div class="clearfix"></div>

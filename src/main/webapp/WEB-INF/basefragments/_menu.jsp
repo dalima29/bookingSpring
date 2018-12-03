@@ -13,7 +13,7 @@
 						</span>
 					</div> <!-- /input-group -->
 				</li>
-				<li><a href="${pageContext.request.contextPath}/home"><i class="fa fa-dashboard fa-fw"></i>
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i class="fa fa-dashboard fa-fw"></i>
 						Dashboard</a></li>
 				<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 						Charts<span class="fa arrow"></span></a>
@@ -21,13 +21,13 @@
 						<li><a href="flot.html">Flot Charts</a></li>
 						<li><a href="morris.html">Morris.js Charts</a></li>
 					</ul> <!-- /.nav-second-level --></li>
-				<li><a href="${pageContext.request.contextPath}/risorse"><i class="fa fa-list fa-fw"></i>
+				<li><a href="${pageContext.request.contextPath}/admin/risorse"><i class="fa fa-list fa-fw"></i>
 						Risorse</a></li>
-				<li><a href="${pageContext.request.contextPath}/prenotazioni"><i
+				<li><a href="${pageContext.request.contextPath}/admin/prenotazioni"><i
 						class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
-				<li><a href="${pageContext.request.contextPath}/aggiungi-risorsa"><i
+				<li><a href="${pageContext.request.contextPath}/admin/aggiungi-risorsa"><i
 						class="fa fa-edit fa-fw"></i> Aggiungi Risorsa</a></li>
-				<li><a href="${pageContext.request.contextPath}/utenti"><i class="fa fa-users fa-fw"></i>
+				<li><a href="${pageContext.request.contextPath}/admin/utenti"><i class="fa fa-users fa-fw"></i>
 						Utenti</a></li>
 			</ul>
 		</div>

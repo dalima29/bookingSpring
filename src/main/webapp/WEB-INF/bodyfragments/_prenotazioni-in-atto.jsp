@@ -21,7 +21,7 @@
 					<div class="panel-body">
 						<div>
 
-							<span><a href="${pageContext.request.contextPath}/cerca-disponibilita"><button
+							<span><a href="${pageContext.request.contextPath}/user/cerca-disponibilita"><button
 										type="button" class="btn btn-default btn-circle">
 										<i class="fa fa-plus"></i>
 									</button></a></span> <span>Aggiungi prenotazione</span>
