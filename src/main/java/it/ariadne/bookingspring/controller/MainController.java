@@ -142,15 +142,18 @@ public class MainController {
 		return "risorsePage";
 	}
 	
-	@RequestMapping(value = { "/admin/modifica-risorsa-DB" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/admin/modifica-risorsa-DB" }, method = RequestMethod.GET)
 	public String modificaRisorsaDB(HttpServletRequest request, Model model) {
 		//da implementare
+		String prova = (String) request.getParameter("param1");
+		System.out.println("sono in modifica "+prova);
 		return "risorsePage";
 	}
 	
-	@RequestMapping(value = { "/admin/elimina-risorsa-DB" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/admin/elimina-risorsa-DB" }, method = RequestMethod.GET)
 	public String eliminaRisorsaDB(HttpServletRequest request, Model model) {
 		//da implementare
+		System.out.println("sono in elimina");
 		return "risorsePage";
 	}
 	

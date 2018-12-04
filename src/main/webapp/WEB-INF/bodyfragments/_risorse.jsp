@@ -37,7 +37,7 @@
 									<th>Limite</th>
 									<th>Nome</th>
 									<th>Risorsa</th>
-									<th></th>
+									<th>Modifica</th>
 								</tr>
 							</thead>
 						</table>
@@ -70,6 +70,43 @@
 	<script src="../dist/js/sb-admin-2.js"></script>
 
 	<!-- Page-Level Demo Scripts - Tables - Use for reference -->
+	<!-- 
+	<script>
+		$(document)
+				.ready(
+						function() {
+							var table = $('#dataTables-example')
+									.DataTable(
+											{
+												"ajax" : "/admin/getrisorselist",
+												"columns" : [
+														{
+															"data" : "id"
+														},
+														{
+															"data" : "limite"
+														},
+														{
+															"data" : "nome"
+														},
+														{
+															"data" : "tipo"
+														},
+														{
+															"defaultContent" : '<button type="button" class="btn btn-default btn-circle"> <i class="fa fa-pencil"></i> </button> <a href="${pageContext.request.contextPath}/admin/elimina-risorsa-DB"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
+
+														} ]
+
+											});
+							$('#dataTables-example tbody').on( 'click', 'button', function () {
+								<% System.out.println("sono in Javascript");%>
+								var data = table.row( $(this).parents('tr') ).data();
+								
+								//var colonna = table.column($(this).parents('th')).name();
+								alert(table.column($(this).parents('tr') ).index("visible"));
+							});
+						});
+	</script> -->
 	<script>
 		$(document)
 				.ready(
