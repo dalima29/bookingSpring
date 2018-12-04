@@ -112,7 +112,7 @@ public class MainController {
 
 	@ResponseBody
 	@RequestMapping(value = { "/admin/getrisorselist" }, method = RequestMethod.GET)
-	public TableResponse index() {
+	public TableResponse ritornaListaRisorse() {
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		tableResponse.setDraw(0);
 		tableResponse.setData(all);
@@ -131,7 +131,7 @@ public class MainController {
 		Risorsa r = new Risorsa(nome, limite, re);
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		for (Risorsa ris : all) {
-			if (ris.getNome().equals(r.getNome())) {
+			if (ris.getNome().equalsIgnoreCase(r.getNome())) {
 				error = "Non fare il furbo, la risorsa esiste già";
 			}
 		}
@@ -140,5 +140,24 @@ public class MainController {
 		}
 		model.addAttribute("erroreNome", error);
 		return "risorsePage";
+	}
+	
+	@RequestMapping(value = { "/admin/modifica-risorsa-DB" }, method = RequestMethod.POST)
+	public String modificaRisorsaDB(HttpServletRequest request, Model model) {
+		//da implementare
+		return "risorsePage";
+	}
+	
+	@RequestMapping(value = { "/admin/elimina-risorsa-DB" }, method = RequestMethod.POST)
+	public String eliminaRisorsaDB(HttpServletRequest request, Model model) {
+		//da implementare
+		return "risorsePage";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/admin/getutentilist" }, method = RequestMethod.GET)
+	public TableResponse ritornaListaUtenti() {
+		//da implementare
+		return tableResponse;
 	}
 }

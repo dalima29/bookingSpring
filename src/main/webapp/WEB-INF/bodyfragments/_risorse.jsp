@@ -92,7 +92,7 @@
 															"data" : "tipo"
 														},
 														{
-															"defaultContent" : '<a href="${pageContext.request.contextPath}/admin/modifica-risorsa"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-pencil"></i> </button></a> <button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button>'
+															"defaultContent" : '<a href="${pageContext.request.contextPath}/admin/modifica-risorsa-DB"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-pencil"></i> </button></a> <a href="${pageContext.request.contextPath}/admin/elimina-risorsa-DB"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
 														} ]
 
 											});
