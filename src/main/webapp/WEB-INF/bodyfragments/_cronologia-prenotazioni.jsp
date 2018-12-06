@@ -24,36 +24,14 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>Risorsa</th>
-									<th>Nome Risorsa</th>
-									<th>Nome Prenotazione</th>
+									<th>Id</th>
+									<th>Nome risorsa</th>
+									<th>Nome</th>
 									<th>Inizio</th>
 									<th>Fine</th>
+									<th>Nome utente</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr class="odd gradeX">
-									<td align="center">Macchina</td>
-									<td align="center">Toyota Yaris</td>
-									<td align="center">Pippo</td>
-									<td align="center">25-12-2018 09:00</td>
-									<td align="center">25-12-2018 11:00</td>
-								</tr>
-								<tr class="gradeC">
-									<td align="center">Portatile</td>
-									<td align="center">Lenovo k5</td>
-									<td align="center">Pluto</td>
-									<td align="center">25-12-2018 09:00</td>
-									<td align="center">25-12-2018 11:00</td>
-								</tr>
-								<tr class="gradeU">
-									<td align="center">Aula</td>
-									<td align="center">A5</td>
-									<td align="center">Topolino</td>
-									<td align="center">25-12-2018 09:00</td>
-									<td align="center">25-12-2018 11:00</td>
-								</tr>
-							</tbody>
 						</table>
 						<!-- /.table-responsive -->
 					</div>
@@ -66,5 +44,39 @@
 		<!-- /.row -->
 	</div>
 	<!-- /#page-wrapper -->
+	<script>
+		$(document)
+				.ready(
+						function() {
+							$('#dataTables-example')
+									.DataTable(
+											{
+												"ajax" : "/user/getcronologialist",
+												
+												"columns" : [
+														{
+															"data" : "id"
+														},
+														{
+															"data" : "risorsa"
+														},
+														{
+															"data" : "nomeP"
+														},
+														{
+															"data" : "inizio"
+														},
+														{
+															"data" : "fine"
+														},
+														{
+															"data" : "appUser"
+														}
+														]
+
+											});
+
+						});
+	</script>
 </body>
 </html>

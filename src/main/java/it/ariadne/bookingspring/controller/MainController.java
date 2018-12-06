@@ -3,6 +3,7 @@ package it.ariadne.bookingspring.controller;
 import java.security.Principal;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,8 +19,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import it.ariadne.bookingspring.dao.AppRoleDAO;
 import it.ariadne.bookingspring.dao.AppUserDAO;
+import it.ariadne.bookingspring.dao.PrenotazioneDAO;
 import it.ariadne.bookingspring.dao.RisorsaDAO;
 import it.ariadne.bookingspring.entity.AppUser;
+import it.ariadne.bookingspring.entity.Prenotazione;
+import it.ariadne.bookingspring.entity.PrenotazioneStampa;
 import it.ariadne.bookingspring.entity.Risorsa;
 import it.ariadne.bookingspring.entity.RisorsaEnum;
 import it.ariadne.bookingspring.utils.TableResponse;
@@ -31,11 +35,16 @@ public class MainController {
 	@Autowired
 	RisorsaDAO risorsaDAO;
 	@Autowired
+	PrenotazioneDAO prenotazioneDAO;
+	@Autowired
 	AppUserDAO appUserDAO;
 	@Autowired
 	AppRoleDAO appRoleDAO;
 	@Autowired
-	TableResponse tableResponse;
+	TableResponse<Risorsa> tableResponse;
+	@Autowired
+	TableResponse<PrenotazioneStampa> tableResponsePrenotazione;
+	
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String loginPage(Model model) {
@@ -133,6 +142,32 @@ public class MainController {
 
 		return tableResponse;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/admin/getcronologialist" }, method = RequestMethod.GET)
+	public TableResponse<PrenotazioneStampa> ritornaListaCronologia() {
+		System.out.println("1111");
+		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO.findAll();
+		tableResponsePrenotazione.setDraw(0);
+		System.out.println("2222");
+		ArrayList<PrenotazioneStampa> prenotazioneStampa = new ArrayList<>();
+
+		tableResponsePrenotazione.setRecordsFiltered(all.size());
+		System.out.println("333");
+		tableResponsePrenotazione.setRecordsTotal(all.size());
+		for (Prenotazione p : all) {
+			PrenotazioneStampa ps = new PrenotazioneStampa();
+			ps.setId(p.getId());
+			ps.setInizio(p.getInizio());
+			ps.setFine(p.getFine());
+			ps.setRisorsa(p.getRisorsa().getNome());
+			ps.setAppUser(p.getAppUser().getUserName());
+			ps.setNomeP(p.getNomeP());
+			prenotazioneStampa.add(ps);
+		}
+		tableResponsePrenotazione.setData(prenotazioneStampa);
+		return tableResponsePrenotazione;
+	}
 
 	@RequestMapping(value = { "/admin/aggiungi-risorsa-DB" }, method = RequestMethod.POST)
 	public String aggiungiRisorsaDB(HttpServletRequest request, Model model) {
@@ -191,7 +226,7 @@ public class MainController {
 
 	}
 	
-	@ResponseBody
+/*	@ResponseBody
 	@RequestMapping(value = { "/admin/getutentilist" }, method = RequestMethod.GET)
 	public TableResponse ritornaListaUtenti() {
 		//da implementare
@@ -201,5 +236,5 @@ public class MainController {
 		tableResponse.setRecordsFiltered(all.size());
 		tableResponse.setRecordsTotal(all.size());
 		return tableResponse;
-	}
+	}*/
 }
