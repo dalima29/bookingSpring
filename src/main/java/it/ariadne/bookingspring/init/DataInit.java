@@ -27,12 +27,12 @@ public class DataInit implements ApplicationRunner {
  
             r1.setLimite(5);
  
-            r1.setNome("Yaris");
+            r1.setNome("YARIS");
             
             r1.setTipo(RisorsaEnum.Macchina);
             Risorsa r2 = new Risorsa();
             r2.setLimite(4);
-            r2.setNome("Ferrari");
+            r2.setNome("FERRARI");
             r2.setTipo(RisorsaEnum.Macchina);
  
             risorsaDAO.save(r1);

@@ -21,6 +21,7 @@
 					<div class="panel-body">
 						<div>
 						<h3><font color="red"><b>${erroreNome}</b></font></h3>
+						
 							 <span><a
 								href="${pageContext.request.contextPath}/admin/aggiungi-risorsa"><button
 										type="button" class="btn btn-default btn-circle">
@@ -93,7 +94,7 @@
 
 											});
 							$('#dataTables-example tbody').on( 'click', 'button', function () {
-								<% System.out.println("sono in Javascript");%>
+								
 								var data = table.row( $(this).parents('tr') ).data();
 								
 								//var colonna = table.column($(this).parents('th')).name();
@@ -123,10 +124,11 @@
 															"data" : "tipo"
 														},
 														{
-															"defaultContent" : '<a href="${pageContext.request.contextPath}/admin/modifica-risorsa-DB"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-pencil"></i> </button></a> <a href="${pageContext.request.contextPath}/admin/elimina-risorsa-DB"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
+															"defaultContent" : '<a href="${pageContext.request.contextPath}/admin/modifica-risorsa"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-pencil"></i> </button></a> <a href="${pageContext.request.contextPath}/admin/elimina-risorsa"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
 														} ]
 
 											});
+
 						});
 	</script>
 </body>

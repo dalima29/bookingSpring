@@ -90,6 +90,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_modifica-risorsa.jsp" />
 	</definition>
+	
+		<!-- Elimina Risorsa Page -->
+	<definition name="elimina-risorsaPage"
+		extends="base.definition">
+		<put-attribute name="title"
+			value="Elimina Risorsa Page" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_elimina-risorsa.jsp" />
+	</definition>
 
 	<!-- Prenotazioni Page -->
 	<definition name="prenotazioniPage"

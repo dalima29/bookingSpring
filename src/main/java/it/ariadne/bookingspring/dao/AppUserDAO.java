@@ -1,5 +1,7 @@
 package it.ariadne.bookingspring.dao;
 
+import java.util.ArrayList;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -9,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import it.ariadne.bookingspring.entity.AppUser;
+import it.ariadne.bookingspring.entity.UserRole;
+import it.ariadne.bookingspring.entity.AppRole;
 
 
 @Repository
@@ -18,7 +22,7 @@ public class AppUserDAO {
     @Autowired
     private EntityManager entityManager;
  
-    public AppUser findUserAccount(String userName) {
+    public AppUser findUserAccount(String userName){
         try {
             String sql = "Select e from " + AppUser.class.getName() + " e " //
                     + " Where e.userName = :userName ";
@@ -28,6 +32,20 @@ public class AppUserDAO {
  
             return (AppUser) query.getSingleResult();
         } catch (NoResultException e) {
+            return null;
+        }
+    }
+    
+    public ArrayList<String> trovaUtentiNonAdmin(String nomeRuolo) {
+    	try {
+    		String sql = "Select au.userName from " + AppUser.class.getName() + " au " +
+    	"JOIN "+ UserRole.class.getName() + " ur "//
+    				+"Where au.userId = ur.appUser.userId AND ur.appRole.roleName = :nomeRuolo ";
+    		
+    		Query query = entityManager.createQuery(sql, String.class);
+    		query.setParameter("nomeRuolo", nomeRuolo);
+    		return (ArrayList<String>) query.getResultList();
+    	}catch (NoResultException e) {
             return null;
         }
     }

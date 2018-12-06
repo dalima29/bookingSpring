@@ -26,5 +26,7 @@ public class AppRoleDAO {
         query.setParameter("userId", userId);
         return query.getResultList();
     }
+    
+
  
 }

@@ -16,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import it.ariadne.bookingspring.dao.AppRoleDAO;
+import it.ariadne.bookingspring.dao.AppUserDAO;
 import it.ariadne.bookingspring.dao.RisorsaDAO;
+import it.ariadne.bookingspring.entity.AppUser;
 import it.ariadne.bookingspring.entity.Risorsa;
 import it.ariadne.bookingspring.entity.RisorsaEnum;
 import it.ariadne.bookingspring.utils.TableResponse;
@@ -27,6 +30,10 @@ public class MainController {
 
 	@Autowired
 	RisorsaDAO risorsaDAO;
+	@Autowired
+	AppUserDAO appUserDAO;
+	@Autowired
+	AppRoleDAO appRoleDAO;
 	@Autowired
 	TableResponse tableResponse;
 
@@ -84,6 +91,11 @@ public class MainController {
 	public String modificaRisorsaPage(Model model) {
 		return "modifica-risorsaPage";
 	}
+	
+	@RequestMapping(value = { "/admin/elimina-risorsa" }, method = RequestMethod.GET)
+	public String eliminaRisorsaPage(Model model) {
+		return "elimina-risorsaPage";
+	}
 
 	@RequestMapping(value = { "/admin/prenotazioni" }, method = RequestMethod.GET)
 	public String prenotazioniPage(Model model) {
@@ -126,12 +138,13 @@ public class MainController {
 	public String aggiungiRisorsaDB(HttpServletRequest request, Model model) {
 		String error = "";
 		String nome = (String) request.getParameter("name");
+		String nomeDB = nome.toUpperCase();
 		int limite = Integer.parseInt(request.getParameter("limite"));
 		RisorsaEnum re = RisorsaEnum.valueOf(request.getParameter("tipo"));
-		Risorsa r = new Risorsa(nome, limite, re);
+		Risorsa r = new Risorsa(nomeDB, limite, re);
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		for (Risorsa ris : all) {
-			if (ris.getNome().equalsIgnoreCase(r.getNome())) {
+			if (ris.getNome().equals(r.getNome())) {
 				error = "Non fare il furbo, la risorsa esiste già";
 			}
 		}
@@ -142,25 +155,51 @@ public class MainController {
 		return "risorsePage";
 	}
 	
-	@RequestMapping(value = { "/admin/modifica-risorsa-DB" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/modifica-risorsa-DB" }, method = RequestMethod.POST)
 	public String modificaRisorsaDB(HttpServletRequest request, Model model) {
-		//da implementare
-		String prova = (String) request.getParameter("param1");
-		System.out.println("sono in modifica "+prova);
-		return "risorsePage";
+		String errorModifica = "";
+		String nomeR = (String) request.getParameter("nome-risorsa");
+		String nomeRDB = nomeR.toUpperCase();
+		int limite = Integer.parseInt(request.getParameter("limite"));
+		if(risorsaDAO.existsByNome(nomeRDB)) {
+			Risorsa r = risorsaDAO.findByNome(nomeRDB);
+			r.setLimite(limite);
+			risorsaDAO.save(r);
+			return "risorsePage";
+		} else {
+			errorModifica = "La risorsa non esiste";
+			model.addAttribute("erroreModifica",errorModifica);
+			return "modifica-risorsaPage";
+		}
+
 	}
 	
-	@RequestMapping(value = { "/admin/elimina-risorsa-DB" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/elimina-risorsa-DB" }, method = RequestMethod.POST)
 	public String eliminaRisorsaDB(HttpServletRequest request, Model model) {
-		//da implementare
-		System.out.println("sono in elimina");
-		return "risorsePage";
+		String errorElimina = "";
+		String nomeR = (String) request.getParameter("nome-risorsa");
+		String nomeRDB = nomeR.toUpperCase();
+		if(risorsaDAO.existsByNome(nomeRDB)) {
+			System.out.println("111");
+			risorsaDAO.deleteByNome(nomeRDB);
+			return "risorsePage";
+		} else {
+			errorElimina = "La risorsa non esiste";
+			model.addAttribute("erroreElimina",errorElimina);
+			return "elimina-risorsaPage";
+		}
+
 	}
 	
 	@ResponseBody
 	@RequestMapping(value = { "/admin/getutentilist" }, method = RequestMethod.GET)
 	public TableResponse ritornaListaUtenti() {
 		//da implementare
+		ArrayList<String> all = appUserDAO.trovaUtentiNonAdmin("ROLE_USER");
+		tableResponse.setDraw(0);
+		tableResponse.setData(all);
+		tableResponse.setRecordsFiltered(all.size());
+		tableResponse.setRecordsTotal(all.size());
 		return tableResponse;
 	}
 }
