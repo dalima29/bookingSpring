@@ -60,11 +60,26 @@ public class DataInit implements ApplicationRunner {
         	p1.setFine(endDate.toDate());
         	AppUser appUser = appUserDAO.findUserAccount("dbuser1");
         	p1.setAppUser(appUser);
+        	
+            Prenotazione p2 = new Prenotazione();
+            p2.setNomeP("ciccio");
+            p2.setRisorsa(r2);
+            DateTime d3 = new DateTime(2018, 05, 18, 9, 00);     
+            String data3 = d3.toString(df);
+            DateTime startDate3 = df.parseDateTime(data3);
+            p2.setInizio(startDate3.toDate());
+            DateTime d4 = new DateTime(2018, 05, 18, 11, 00);
+        	String data4 = d4.toString(df);
+        	DateTime endDate4 = df.parseDateTime(data4);
+        	p2.setFine(endDate4.toDate());
+        	AppUser appUser2 = appUserDAO.findUserAccount("dbuser2");
+        	p2.setAppUser(appUser2);
 
  
             risorsaDAO.save(r1);
             risorsaDAO.save(r2);
             prenotazioneDAO.save(p1);
+            prenotazioneDAO.save(p2);
         }
  
     }
