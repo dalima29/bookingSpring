@@ -44,7 +44,6 @@ public class MainController {
 	TableResponse<Risorsa> tableResponse;
 	@Autowired
 	TableResponse<PrenotazioneStampa> tableResponsePrenotazione;
-	
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String loginPage(Model model) {
@@ -100,7 +99,7 @@ public class MainController {
 	public String modificaRisorsaPage(Model model) {
 		return "modifica-risorsaPage";
 	}
-	
+
 	@RequestMapping(value = { "/admin/elimina-risorsa" }, method = RequestMethod.GET)
 	public String eliminaRisorsaPage(Model model) {
 		return "elimina-risorsaPage";
@@ -142,18 +141,40 @@ public class MainController {
 
 		return tableResponse;
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value = { "/admin/getcronologialist" }, method = RequestMethod.GET)
-	public TableResponse<PrenotazioneStampa> ritornaListaCronologia() {
-		System.out.println("1111");
+	@RequestMapping(value = { "/admin/getprenotazionilist" }, method = RequestMethod.GET)
+	public TableResponse<PrenotazioneStampa> ritornaListaPrenotazioni() {
 		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO.findAll();
 		tableResponsePrenotazione.setDraw(0);
-		System.out.println("2222");
 		ArrayList<PrenotazioneStampa> prenotazioneStampa = new ArrayList<>();
 
 		tableResponsePrenotazione.setRecordsFiltered(all.size());
-		System.out.println("333");
+		tableResponsePrenotazione.setRecordsTotal(all.size());
+		for (Prenotazione p : all) {
+			PrenotazioneStampa ps = new PrenotazioneStampa();
+			ps.setId(p.getId());
+			ps.setInizio(p.getInizio());
+			ps.setFine(p.getFine());
+			ps.setRisorsa(p.getRisorsa().getNome());
+			ps.setAppUser(p.getAppUser().getUserName());
+			ps.setNomeP(p.getNomeP());
+			prenotazioneStampa.add(ps);
+		}
+		tableResponsePrenotazione.setData(prenotazioneStampa);
+		return tableResponsePrenotazione;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/user/getcronologialist" }, method = RequestMethod.GET)
+	public TableResponse<PrenotazioneStampa> ritornaListaCronologia(Model model, Principal principal) {
+		String utente = principal.getName();
+		AppUser appUser = appUserDAO.findUserAccount(utente);
+		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO.findByAppUser(appUser);
+		tableResponsePrenotazione.setDraw(0);
+		ArrayList<PrenotazioneStampa> prenotazioneStampa = new ArrayList<>();
+
+		tableResponsePrenotazione.setRecordsFiltered(all.size());
 		tableResponsePrenotazione.setRecordsTotal(all.size());
 		for (Prenotazione p : all) {
 			PrenotazioneStampa ps = new PrenotazioneStampa();
@@ -189,52 +210,51 @@ public class MainController {
 		model.addAttribute("erroreNome", error);
 		return "risorsePage";
 	}
-	
+
 	@RequestMapping(value = { "/admin/modifica-risorsa-DB" }, method = RequestMethod.POST)
 	public String modificaRisorsaDB(HttpServletRequest request, Model model) {
 		String errorModifica = "";
 		String nomeR = (String) request.getParameter("nome-risorsa");
 		String nomeRDB = nomeR.toUpperCase();
 		int limite = Integer.parseInt(request.getParameter("limite"));
-		if(risorsaDAO.existsByNome(nomeRDB)) {
+		if (risorsaDAO.existsByNome(nomeRDB)) {
 			Risorsa r = risorsaDAO.findByNome(nomeRDB);
 			r.setLimite(limite);
 			risorsaDAO.save(r);
 			return "risorsePage";
 		} else {
 			errorModifica = "La risorsa non esiste";
-			model.addAttribute("erroreModifica",errorModifica);
+			model.addAttribute("erroreModifica", errorModifica);
 			return "modifica-risorsaPage";
 		}
 
 	}
-	
+
 	@RequestMapping(value = { "/admin/elimina-risorsa-DB" }, method = RequestMethod.POST)
 	public String eliminaRisorsaDB(HttpServletRequest request, Model model) {
 		String errorElimina = "";
 		String nomeR = (String) request.getParameter("nome-risorsa");
 		String nomeRDB = nomeR.toUpperCase();
-		if(risorsaDAO.existsByNome(nomeRDB)) {
+		if (risorsaDAO.existsByNome(nomeRDB)) {
 			System.out.println("111");
 			risorsaDAO.deleteByNome(nomeRDB);
 			return "risorsePage";
 		} else {
 			errorElimina = "La risorsa non esiste";
-			model.addAttribute("erroreElimina",errorElimina);
+			model.addAttribute("erroreElimina", errorElimina);
 			return "elimina-risorsaPage";
 		}
 
 	}
-	
-/*	@ResponseBody
-	@RequestMapping(value = { "/admin/getutentilist" }, method = RequestMethod.GET)
-	public TableResponse ritornaListaUtenti() {
-		//da implementare
-		ArrayList<String> all = appUserDAO.trovaUtentiNonAdmin("ROLE_USER");
-		tableResponse.setDraw(0);
-		tableResponse.setData(all);
-		tableResponse.setRecordsFiltered(all.size());
-		tableResponse.setRecordsTotal(all.size());
-		return tableResponse;
-	}*/
+
+	/*
+	 * @ResponseBody
+	 * 
+	 * @RequestMapping(value = { "/admin/getutentilist" }, method =
+	 * RequestMethod.GET) public TableResponse ritornaListaUtenti() { //da
+	 * implementare ArrayList<String> all =
+	 * appUserDAO.trovaUtentiNonAdmin("ROLE_USER"); tableResponse.setDraw(0);
+	 * tableResponse.setData(all); tableResponse.setRecordsFiltered(all.size());
+	 * tableResponse.setRecordsTotal(all.size()); return tableResponse; }
+	 */
 }

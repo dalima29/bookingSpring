@@ -92,7 +92,7 @@
 						$('#dataTables-example')
 								.DataTable(
 										{
-											"ajax" : "/admin/getcronologialist",
+											"ajax" : "/admin/getprenotazionilist",
 											
 											"columns" : [
 													{
