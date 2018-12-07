@@ -32,15 +32,15 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>Risorsa</th>
-									<th>Nome Risorsa</th>
-									<th>Nome Prenotazione</th>
+									<th>Id</th>
+									<th>Nome risorsa</th>
+									<th>Nome</th>
 									<th>Inizio</th>
 									<th>Fine</th>
 									<th></th>
 								</tr>
 							</thead>
-							<tbody>
+<!--  							<tbody>
 								<tr class="odd gradeX">
 									<td align="center">Macchina</td>
 									<td align="center">Toyota Yaris</td>
@@ -74,7 +74,7 @@
 											<i class="fa fa-trash-o"></i>
 										</button></td>
 								</tr>
-							</tbody>
+							</tbody>-->
 						</table>
 						<!-- /.table-responsive -->
 					</div>
@@ -87,5 +87,49 @@
 		<!-- /.row -->
 	</div>
 	<!-- /#page-wrapper -->
+		<script src="../vendor/jquery/jquery.min.js"></script>
+
+	<!-- DataTables JavaScript -->
+	<script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+	<script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+	<script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+	<!-- Custom Theme JavaScript -->
+	<script src="../dist/js/sb-admin-2.js"></script>
+	
+		<script>
+		$(document)
+				.ready(
+						function() {
+							$('#dataTables-example')
+									.DataTable(
+											{
+												"ajax" : "/user/getprenotazionicorrentilist",
+												
+												"columns" : [
+														{
+															"data" : "id"
+														},
+														{
+															"data" : "risorsa"
+														},
+														{
+															"data" : "nomeP"
+														},
+														{
+															"data" : "inizio"
+														},
+														{
+															"data" : "fine"
+														},
+														{
+															"defaultContent" : '<a href="${pageContext.request.contextPath}/user/cerca-disponibilita"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
+														}
+														]
+
+											});
+
+						});
+	</script>
 </body>
 </html>

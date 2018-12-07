@@ -3,10 +3,12 @@ package it.ariadne.bookingspring.controller;
 import java.security.Principal;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -171,6 +173,32 @@ public class MainController {
 		String utente = principal.getName();
 		AppUser appUser = appUserDAO.findUserAccount(utente);
 		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO.findByAppUser(appUser);
+		tableResponsePrenotazione.setDraw(0);
+		ArrayList<PrenotazioneStampa> prenotazioneStampa = new ArrayList<>();
+
+		tableResponsePrenotazione.setRecordsFiltered(all.size());
+		tableResponsePrenotazione.setRecordsTotal(all.size());
+		for (Prenotazione p : all) {
+			PrenotazioneStampa ps = new PrenotazioneStampa();
+			ps.setId(p.getId());
+			ps.setInizio(p.getInizio());
+			ps.setFine(p.getFine());
+			ps.setRisorsa(p.getRisorsa().getNome());
+			ps.setAppUser(p.getAppUser().getUserName());
+			ps.setNomeP(p.getNomeP());
+			prenotazioneStampa.add(ps);
+		}
+		tableResponsePrenotazione.setData(prenotazioneStampa);
+		return tableResponsePrenotazione;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/user/getprenotazionicorrentilist" }, method = RequestMethod.GET)
+	public TableResponse<PrenotazioneStampa> ritornaListaPrenotazioni(Model model, Principal principal) {
+		String utente = principal.getName();
+		AppUser appUser = appUserDAO.findUserAccount(utente);
+		Date adesso = new Date();
+		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO.findByAppUserAndInizioGreaterThanEqual(appUser, adesso);
 		tableResponsePrenotazione.setDraw(0);
 		ArrayList<PrenotazioneStampa> prenotazioneStampa = new ArrayList<>();
 
