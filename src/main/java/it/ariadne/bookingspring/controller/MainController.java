@@ -306,15 +306,17 @@ public class MainController {
 		}
 
 	}
+	
+	@RequestMapping(value = { "/user/cerca-disponibilita-DB" }, method = RequestMethod.POST)
+	public String cercaDisponibilitaDB(HttpServletRequest request, Model model, Principal principal) {
+		return "devi implementare il metodo";
 
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping(value = { "/admin/getutentilist" }, method =
-	 * RequestMethod.GET) public TableResponse ritornaListaUtenti() { //da
-	 * implementare ArrayList<String> all =
-	 * appUserDAO.trovaUtentiNonAdmin("ROLE_USER"); tableResponse.setDraw(0);
-	 * tableResponse.setData(all); tableResponse.setRecordsFiltered(all.size());
-	 * tableResponse.setRecordsTotal(all.size()); return tableResponse; }
-	 */
+	}
+	
+	@RequestMapping(value = { "/user/aggiungi-prenotazione-DB" }, method = RequestMethod.POST)
+	public String aggiungiPrenotazioneDB(HttpServletRequest request, Model model, Principal principal) {
+		return "devi implementare il metodo";
+
+	}
+
 }

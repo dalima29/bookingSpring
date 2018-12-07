@@ -21,7 +21,7 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-lg-12">
-								<form role="form">
+								<form role="form" method="POST" action="${pageContext.request.contextPath}/user/cerca-disponibilita-DB">
 									<div class="form-group">
 										<label>Tipo Risorsa</label> <select class="form-control"
 											required>
