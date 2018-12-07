@@ -337,7 +337,7 @@ public class MainController {
 				if(dataDisp) {
 					DateTime primaDataDisp = new DateTime (dtinizioR);
 					DateTimeFormatter df = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm");
-					errorRisNonEsiste = primaDataDisp.toString(df);
+					errorRisNonEsiste = "La prima disponibile è "+primaDataDisp.toString(df);
 					model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
 					return "aggiungiPrenotazionePage";
 				}
