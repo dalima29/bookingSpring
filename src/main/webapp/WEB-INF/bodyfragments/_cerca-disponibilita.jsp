@@ -21,6 +21,7 @@
 					<div class="panel-body">
 						<div class="row">
 						<h3><font color="red"><b>${erroreRisNonEsiste}</b></font></h3>
+						<h3><font color="red"><b>${erroreDataNonDisp}</b></font></h3>
 							<div class="col-lg-12">
 								<form role="form" method="POST"
 									action="${pageContext.request.contextPath}/user/cerca-disponibilita-DB">

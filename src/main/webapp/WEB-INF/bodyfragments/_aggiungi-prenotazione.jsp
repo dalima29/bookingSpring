@@ -22,33 +22,26 @@
 					<div class="panel-body">
 						<div class="row">
 						<h3><font color="red"><b>${erroreRisNonEsiste}</b></font></h3>
+						<h3><font color="red"><b>${erroreDataNonDisp}</b></font></h3>
 							<div class="col-lg-12">
 								<form role="form" method="POST" action="${pageContext.request.contextPath}/user/aggiungi-prenotazione-DB">
 									<div class="form-group">
-										<label>Tipo Risorsa</label> <select class="form-control"
-											required>
-											<option disabled selected value>Seleziona tipo
-												risorsa</option>
-											<option>Aula</option>
-											<option>Macchina</option>
-											<option>Portatile</option>
-										</select>
+										<label>Id risorsa</label> <input class="form-control"
+											type="number" name="IdRis" id="IdRis" 
+											placeholder="Inserisci id risorsa" required>
 									</div>
 									<div class="form-group">
 										<label>Data inizio</label> <input class="form-control"
-											type="datetime-local" required>
+											type="datetime-local" id="inizio" name="inizio" required>
 									</div>
 									<div class="form-group">
-										<label>Data fine</label> <input class="form-control"
-											type="datetime-local" required>
-									</div>
-									<div class="form-group">
-										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserisci nome risorsa" required>
+										<label>Periodo</label> <input class="form-control"
+											type="number" min="1" 
+											placeholder="Inserisci Periodo" id="periodo" name="periodo" required>
 									</div>
 									<div class="form-group">
 										<label>Nome prenotazione</label> <input class="form-control"
-											placeholder="Inserisci nome prenotazione" required>
+											placeholder="Inserisci nome prenotazione" id="nomeP" name="nomeP" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Prenota</button>
 									<button type="reset" class="btn btn-default">Reset</button>

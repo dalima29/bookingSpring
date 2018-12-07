@@ -126,12 +126,12 @@ public class MainController {
 	public String cercaDisponibilitaPage(Model model) {
 		return "cercaDisponibilitaPage";
 	}
-	
+
 	@RequestMapping(value = { "/user/aggiungi-prenotazione" }, method = RequestMethod.GET)
 	public String aggiungiPrenotazionePage(Model model) {
 		return "aggiungiPrenotazionePage";
 	}
-	
+
 	@RequestMapping(value = { "/user/rimuovi-prenotazione" }, method = RequestMethod.GET)
 	public String rimuoviPrenotazionePage(Model model) {
 		return "rimuoviPrenotazionePage";
@@ -206,14 +206,15 @@ public class MainController {
 		tableResponsePrenotazione.setData(prenotazioneStampa);
 		return tableResponsePrenotazione;
 	}
-	
+
 	@ResponseBody
 	@RequestMapping(value = { "/user/getprenotazionicorrentilist" }, method = RequestMethod.GET)
 	public TableResponse<PrenotazioneStampa> ritornaListaPrenotazioni(Model model, Principal principal) {
 		String utente = principal.getName();
 		AppUser appUser = appUserDAO.findUserAccount(utente);
 		Date adesso = new Date();
-		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO.findByAppUserAndInizioGreaterThanEqual(appUser, adesso);
+		ArrayList<Prenotazione> all = (ArrayList<Prenotazione>) prenotazioneDAO
+				.findByAppUserAndInizioGreaterThanEqual(appUser, adesso);
 		tableResponsePrenotazione.setDraw(0);
 		ArrayList<PrenotazioneStampa> prenotazioneStampa = new ArrayList<>();
 
@@ -289,14 +290,14 @@ public class MainController {
 		}
 
 	}
-	
+
 	@RequestMapping(value = { "/user/elimina-prenotazione-DB" }, method = RequestMethod.POST)
 	public String eliminaPrenotazioneDB(HttpServletRequest request, Model model, Principal principal) {
 		String errorEliminaPrenotazione = "";
 		Long idP = Long.valueOf(request.getParameter("id-prenotazione"));
 		String utente = principal.getName();
 		if (prenotazioneDAO.existsById(idP)) {
-			if(prenotazioneDAO.findById(idP).get().getAppUser().getUserName().equals(utente)) {
+			if (prenotazioneDAO.findById(idP).get().getAppUser().getUserName().equals(utente)) {
 				prenotazioneDAO.deleteById(idP);
 				return "prenotazioniInAttoPage";
 			} else {
@@ -311,7 +312,7 @@ public class MainController {
 		}
 
 	}
-	
+
 	@RequestMapping(value = { "/user/cerca-disponibilita-DB" }, method = RequestMethod.POST)
 	public String cercaDisponibilitaDB(HttpServletRequest request, Model model, Principal principal) {
 		Long idR = Long.valueOf(request.getParameter("idR"));
@@ -319,48 +320,85 @@ public class MainController {
 		DateTime dtfineR = new DateTime(request.getParameter("fine"));
 		Period periodo = new Period(Integer.parseInt(request.getParameter("durata")), 0, 0, 0);
 		String errorRisNonEsiste = "";
-		if(risorsaDAO.existsById(idR)) {
+		if (risorsaDAO.existsById(idR)) {
 			Optional<Risorsa> risorsa = risorsaDAO.findById(idR);
 			ArrayList<Prenotazione> prenotazioni = prenotazioneDAO.findByRisorsa(risorsa.get());
 			boolean dataDisp = true;
 			do {
 				dataDisp = true;
-				for(Prenotazione pre: prenotazioni) {
-					Interval intervallo = new Interval(dtinizioR,dtinizioR.plus(periodo));
+				for (Prenotazione pre : prenotazioni) {
+					Interval intervallo = new Interval(dtinizioR, dtinizioR.plus(periodo));
 					Interval intervalloDB = new Interval(new DateTime(pre.getInizio()), new DateTime(pre.getFine()));
-					if(intervallo.overlaps(intervalloDB)) {
+					if (intervallo.overlaps(intervalloDB)) {
 						dtinizioR = dtinizioR.plusHours(1);
 						dataDisp = false;
 						break;
 					}
 				}
-				if(dataDisp) {
-					DateTime primaDataDisp = new DateTime (dtinizioR);
+				if (dataDisp) {
+					DateTime primaDataDisp = new DateTime(dtinizioR);
 					DateTimeFormatter df = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm");
-					errorRisNonEsiste = "La prima disponibile è "+primaDataDisp.toString(df);
-					model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
+					errorRisNonEsiste = "La prima disponibile è " + primaDataDisp.toString(df);
+					model.addAttribute("erroreRisNonEsiste", errorRisNonEsiste);
 					return "aggiungiPrenotazionePage";
 				}
 			} while (dtinizioR.plus(periodo).isBefore(dtfineR));
 			errorRisNonEsiste = "non sono disponibili date";
-			model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
+			model.addAttribute("erroreRisNonEsiste", errorRisNonEsiste);
 			return "cercaDisponibilitaPage";
 		} else {
 			errorRisNonEsiste = "La risorsa non esiste";
-			model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
+			model.addAttribute("erroreRisNonEsiste", errorRisNonEsiste);
 			return "cercaDisponibilitaPage";
 		}
-		
+
 	}
-	
-/*	private boolean getDisponibilita(DateTime inizio, DateTime fine) {
-		Interval intervallo = new Interval(inizio,fine);
-	}*/
-	
+
+	/*
+	 * private boolean getDisponibilita(DateTime inizio, DateTime fine) { Interval
+	 * intervallo = new Interval(inizio,fine); }
+	 */
+
 	@RequestMapping(value = { "/user/aggiungi-prenotazione-DB" }, method = RequestMethod.POST)
 	public String aggiungiPrenotazioneDB(HttpServletRequest request, Model model, Principal principal) {
-		return "devi implementare il metodo";
+		Long idR = Long.valueOf(request.getParameter("IdRis"));
+		DateTime dtinizioR = new DateTime(request.getParameter("inizio"));
+		Period periodo = new Period(Integer.parseInt(request.getParameter("periodo")), 0, 0, 0);
+		String nomePrenotazione = (String)request.getParameter("nomeP");
+		String errorDataNonDisp = "";
+		if (risorsaDAO.existsById(idR)) {
+			Optional<Risorsa> risorsa = risorsaDAO.findById(idR);
+			ArrayList<Prenotazione> prenotazioni = prenotazioneDAO.findByRisorsa(risorsa.get());
+			boolean dataDisp = true;
+			for (Prenotazione pre : prenotazioni) {
+				Interval intervallo = new Interval(dtinizioR, dtinizioR.plus(periodo));
+				Interval intervalloDB = new Interval(new DateTime(pre.getInizio()), new DateTime(pre.getFine()));
+				if (intervallo.overlaps(intervalloDB)) {
+					dataDisp = false;
+					break;
+				}
+			}
+			if (dataDisp) {
+				Prenotazione preno = new Prenotazione();
+				AppUser appUser = appUserDAO.findUserAccount(principal.getName());
+				preno.setAppUser(appUser);
 
+				DateTime primaDataDisp = new DateTime(dtinizioR);
+				preno.setFine(primaDataDisp.plus(periodo).toDate());
+				preno.setInizio(primaDataDisp.toDate());
+				preno.setNomeP(nomePrenotazione);
+				preno.setRisorsa(risorsa.get());
+				prenotazioneDAO.save(preno);			
+				return "prenotazioniInAttoPage";
+			}
+			errorDataNonDisp = "Data non disponibile";
+			model.addAttribute("erroreDataNonDisp", errorDataNonDisp);
+			return "cercaDisponibilitaPage";
+		} else {
+			errorDataNonDisp = "La risorsa non esiste";
+			model.addAttribute("erroreRisNonEsiste", errorDataNonDisp);
+			return "aggiungiPrenotazionePage";
+		}
 	}
 
 }
