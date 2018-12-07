@@ -121,6 +121,11 @@ public class MainController {
 	public String cercaDisponibilitaPage(Model model) {
 		return "cercaDisponibilitaPage";
 	}
+	
+	@RequestMapping(value = { "/user/aggiungi-prenotazione" }, method = RequestMethod.GET)
+	public String aggiungiPrenotazionePage(Model model) {
+		return "aggiungiPrenotazionePage";
+	}
 
 	@RequestMapping(value = { "/user/cronologia-prenotazioni" }, method = RequestMethod.GET)
 	public String cronologiaPrenotazioniPage(Model model) {
