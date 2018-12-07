@@ -40,11 +40,11 @@ public class DataInit implements ApplicationRunner {
  
             r1.setNome("YARIS");
             
-            r1.setTipo(RisorsaEnum.Macchina);
+            r1.setTipo(RisorsaEnum.MACCHINA);
             Risorsa r2 = new Risorsa();
             r2.setLimite(4);
             r2.setNome("FERRARI");
-            r2.setTipo(RisorsaEnum.Macchina);
+            r2.setTipo(RisorsaEnum.MACCHINA);
             
             Prenotazione p1 = new Prenotazione();
             p1.setNomeP("ciccio");

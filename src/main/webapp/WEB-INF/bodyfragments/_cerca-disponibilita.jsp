@@ -20,10 +20,12 @@
 					<div class="panel-heading">Cerca disponibilità</div>
 					<div class="panel-body">
 						<div class="row">
+						<h3><font color="red"><b>${erroreRisNonEsiste}</b></font></h3>
 							<div class="col-lg-12">
-								<form role="form" method="POST" action="${pageContext.request.contextPath}/user/cerca-disponibilita-DB">
-									<div class="form-group">
-										<label>Tipo Risorsa</label> <select class="form-control"
+								<form role="form" method="POST"
+									action="${pageContext.request.contextPath}/user/cerca-disponibilita-DB">
+									<!-- <div class="form-group">
+										<label>Tipo Risorsa</label> <select id="tipo" name="tipo" class="form-control"
 											required>
 											<option disabled selected value>seleziona tipo
 												risorsa</option>
@@ -31,27 +33,24 @@
 											<option>Macchina</option>
 											<option>Portatile</option>
 										</select>
-									</div>
-									<div class="form-group">
-										<label>Periodo</label> <input class="form-control"
-											placeholder="Inserisci numero ore" type="number" min="1"
-											required>
-									</div>
+									</div> -->
 									<div class="form-group">
 										<label>Data inizio ricerca</label> <input class="form-control"
-											type="datetime-local" required>
+											type="datetime-local" id="inizio" name="inizio" required>
 									</div>
 									<div class="form-group">
-										<label>Data fine ricerca</label> <input class="form-control"
-											type="datetime-local">
+										<label>Data fine ricerca</label> <input id="fine" name="fine"
+											class="form-control" type="datetime-local" required>
 									</div>
 									<div class="form-group">
-										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserisci nome risorsa">
+										<label>Id Risorsa</label> <input id="idR" name="idR"
+											class="form-control" placeholder="Inserisci nome risorsa"
+											type="number" required>
 									</div>
 									<div class="form-group">
-										<label>Limite</label> <input class="form-control"
-											placeholder="Inserisci limite" type="number" min="1">
+										<label>Durata</label> <input id="durata" name="durata"
+											class="form-control" placeholder="Inserisci durata"
+											type="number" min="1" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Verifica</button>
 									<button type="reset" class="btn btn-default">Reset</button>

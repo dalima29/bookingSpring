@@ -21,6 +21,7 @@
 					<div class="panel-heading">Aggiungi prenotazione</div>
 					<div class="panel-body">
 						<div class="row">
+						<h3><font color="red"><b>${erroreRisNonEsiste}</b></font></h3>
 							<div class="col-lg-12">
 								<form role="form" method="POST" action="${pageContext.request.contextPath}/user/aggiungi-prenotazione-DB">
 									<div class="form-group">
@@ -47,7 +48,7 @@
 									</div>
 									<div class="form-group">
 										<label>Nome prenotazione</label> <input class="form-control"
-											placeholder="Inserisci limite" required>
+											placeholder="Inserisci nome prenotazione" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Prenota</button>
 									<button type="reset" class="btn btn-default">Reset</button>

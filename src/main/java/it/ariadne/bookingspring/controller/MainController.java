@@ -5,10 +5,15 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -309,9 +314,48 @@ public class MainController {
 	
 	@RequestMapping(value = { "/user/cerca-disponibilita-DB" }, method = RequestMethod.POST)
 	public String cercaDisponibilitaDB(HttpServletRequest request, Model model, Principal principal) {
-		return "devi implementare il metodo";
-
+		Long idR = Long.valueOf(request.getParameter("idR"));
+		DateTime dtinizioR = new DateTime(request.getParameter("inizio"));
+		DateTime dtfineR = new DateTime(request.getParameter("fine"));
+		Period periodo = new Period(Integer.parseInt(request.getParameter("durata")), 0, 0, 0);
+		String errorRisNonEsiste = "";
+		if(risorsaDAO.existsById(idR)) {
+			Optional<Risorsa> risorsa = risorsaDAO.findById(idR);
+			ArrayList<Prenotazione> prenotazioni = prenotazioneDAO.findByRisorsa(risorsa.get());
+			boolean dataDisp = true;
+			do {
+				dataDisp = true;
+				for(Prenotazione pre: prenotazioni) {
+					Interval intervallo = new Interval(dtinizioR,dtinizioR.plus(periodo));
+					Interval intervalloDB = new Interval(new DateTime(pre.getInizio()), new DateTime(pre.getFine()));
+					if(intervallo.overlaps(intervalloDB)) {
+						dtinizioR = dtinizioR.plusHours(1);
+						dataDisp = false;
+						break;
+					}
+				}
+				if(dataDisp) {
+					DateTime primaDataDisp = new DateTime (dtinizioR);
+					DateTimeFormatter df = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm");
+					errorRisNonEsiste = primaDataDisp.toString(df);
+					model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
+					return "aggiungiPrenotazionePage";
+				}
+			} while (dtinizioR.plus(periodo).isBefore(dtfineR));
+			errorRisNonEsiste = "non sono disponibili date";
+			model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
+			return "cercaDisponibilitaPage";
+		} else {
+			errorRisNonEsiste = "La risorsa non esiste";
+			model.addAttribute("erroreRisNonEsiste",errorRisNonEsiste);
+			return "cercaDisponibilitaPage";
+		}
+		
 	}
+	
+/*	private boolean getDisponibilita(DateTime inizio, DateTime fine) {
+		Interval intervallo = new Interval(inizio,fine);
+	}*/
 	
 	@RequestMapping(value = { "/user/aggiungi-prenotazione-DB" }, method = RequestMethod.POST)
 	public String aggiungiPrenotazioneDB(HttpServletRequest request, Model model, Principal principal) {
