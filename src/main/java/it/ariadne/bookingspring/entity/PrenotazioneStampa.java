@@ -2,6 +2,7 @@ package it.ariadne.bookingspring.entity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -35,6 +36,8 @@ public class PrenotazioneStampa {
 		return inizio;
 	}
 	public void setInizio(Date inizio) {
+		/*final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		sdf.setTimeZone(TimeZone.getTimeZone("Europe/Rome"));*/
 		this.inizio = inizio;
 	}
 	public Date getFine() {

@@ -48,8 +48,7 @@ public class DataInit implements ApplicationRunner {
             
             Prenotazione p1 = new Prenotazione();
             p1.setNomeP("ciccio");
-            p1.setRisorsa(r2);
-            
+            p1.setRisorsa(r2);            
             DateTime d = new DateTime(2018, 05, 18, 9, 00);     
             String data = d.toString(df);
             DateTime startDate = df.parseDateTime(data);
@@ -74,12 +73,26 @@ public class DataInit implements ApplicationRunner {
         	p2.setFine(endDate4.toDate());
         	AppUser appUser2 = appUserDAO.findUserAccount("dbuser2");
         	p2.setAppUser(appUser2);
+        	
+            Prenotazione p3 = new Prenotazione();
+            p3.setNomeP("ciccio");
+            p3.setRisorsa(r2);
+            DateTime d5 = new DateTime(2018, 12, 18, 9, 00);     
+            String data5 = d5.toString(df);
+            DateTime startDate5 = df.parseDateTime(data5);
+            p3.setInizio(startDate5.toDate());
+            DateTime d6 = new DateTime(2018, 12, 18, 11, 00);
+        	String data6 = d6.toString(df);
+        	DateTime endDate6 = df.parseDateTime(data6);
+        	p3.setFine(endDate6.toDate());
+        	p3.setAppUser(appUser);
 
  
             risorsaDAO.save(r1);
             risorsaDAO.save(r2);
             prenotazioneDAO.save(p1);
             prenotazioneDAO.save(p2);
+            prenotazioneDAO.save(p3);
         }
  
     }

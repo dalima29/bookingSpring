@@ -21,7 +21,7 @@
 					<div class="panel-body">
 						<div>
 
-							<span><a href="${pageContext.request.contextPath}/user/cerca-disponibilita"><button
+							<span><a href="${pageContext.request.contextPath}/user/aggiungi-prenotazione"><button
 										type="button" class="btn btn-default btn-circle">
 										<i class="fa fa-plus"></i>
 									</button></a></span> <span>Aggiungi prenotazione</span>
@@ -123,7 +123,7 @@
 															"data" : "fine"
 														},
 														{
-															"defaultContent" : '<a href="${pageContext.request.contextPath}/user/cerca-disponibilita"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
+															"defaultContent" : '<a href="${pageContext.request.contextPath}/user/rimuovi-prenotazione"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
 														}
 														]
 

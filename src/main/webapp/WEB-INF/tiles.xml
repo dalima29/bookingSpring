@@ -132,6 +132,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_aggiungi-prenotazione.jsp" />
 	</definition>
+	
+		<!-- Rimuovi Prenotazione Page -->
+	<definition name="rimuoviPrenotazionePage"
+		extends="baseuser.definition">
+		<put-attribute name="title"
+			value="Rimuovi Prenotazione Page" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_rimuovi-prenotazione.jsp" />
+	</definition>
 
 	<!-- Cronologia Prenotazioni Page -->
 	<definition name="cronologiaPrenotazioniPage"

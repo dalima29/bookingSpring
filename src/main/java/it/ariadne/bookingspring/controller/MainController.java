@@ -126,6 +126,11 @@ public class MainController {
 	public String aggiungiPrenotazionePage(Model model) {
 		return "aggiungiPrenotazionePage";
 	}
+	
+	@RequestMapping(value = { "/user/rimuovi-prenotazione" }, method = RequestMethod.GET)
+	public String rimuoviPrenotazionePage(Model model) {
+		return "rimuoviPrenotazionePage";
+	}
 
 	@RequestMapping(value = { "/user/cronologia-prenotazioni" }, method = RequestMethod.GET)
 	public String cronologiaPrenotazioniPage(Model model) {
@@ -276,6 +281,28 @@ public class MainController {
 			errorElimina = "La risorsa non esiste";
 			model.addAttribute("erroreElimina", errorElimina);
 			return "elimina-risorsaPage";
+		}
+
+	}
+	
+	@RequestMapping(value = { "/user/elimina-prenotazione-DB" }, method = RequestMethod.POST)
+	public String eliminaPrenotazioneDB(HttpServletRequest request, Model model, Principal principal) {
+		String errorEliminaPrenotazione = "";
+		Long idP = Long.valueOf(request.getParameter("id-prenotazione"));
+		String utente = principal.getName();
+		if (prenotazioneDAO.existsById(idP)) {
+			if(prenotazioneDAO.findById(idP).get().getAppUser().getUserName().equals(utente)) {
+				prenotazioneDAO.deleteById(idP);
+				return "prenotazioniInAttoPage";
+			} else {
+				errorEliminaPrenotazione = "La prenotazione non esiste";
+				model.addAttribute("erroreEliminaPrenotazione", errorEliminaPrenotazione);
+				return "rimuoviPrenotazionePage";
+			}
+		} else {
+			errorEliminaPrenotazione = "La prenotazione non esiste";
+			model.addAttribute("erroreEliminaPrenotazione", errorEliminaPrenotazione);
+			return "rimuoviPrenotazionePage";
 		}
 
 	}
