@@ -6,13 +6,11 @@
 <tiles-definitions>
 
 	<!-- Base Define -->
-		<definition name="baselogin.definition"
+	<definition name="baselogin.definition"
 		template="/WEB-INF/layouts/classic.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="header"
-			value="" />
-		<put-attribute name="menu"
-			value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer"
 			value="/WEB-INF/basefragments/_footer.jsp" />
@@ -45,7 +43,7 @@
 		<put-attribute name="title" value="Login Page" />
 		<put-attribute name="body" value="/WEB-INF/login.jsp" />
 	</definition>
-		<!-- 403 Page -->
+	<!-- 403 Page -->
 	<definition name="403Page" extends="baselogin.definition">
 		<put-attribute name="title" value="403 Page" />
 		<put-attribute name="body" value="/WEB-INF/403Page.jsp" />
@@ -73,6 +71,13 @@
 			value="/WEB-INF/bodyfragments/_risorse.jsp" />
 	</definition>
 
+	<!-- Risorse User Page -->
+	<definition name="risorseUserPage" extends="baseuser.definition">
+		<put-attribute name="title" value="Risorse User Page" />
+		<put-attribute name="body"
+			value="/WEB-INF/bodyfragments/_risorseUser.jsp" />
+	</definition>
+
 	<!-- Aggiungi Risorsa Page -->
 	<definition name="aggiungi-risorsaPage"
 		extends="base.definition">
@@ -90,12 +95,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_modifica-risorsa.jsp" />
 	</definition>
-	
-		<!-- Elimina Risorsa Page -->
+
+	<!-- Elimina Risorsa Page -->
 	<definition name="elimina-risorsaPage"
 		extends="base.definition">
-		<put-attribute name="title"
-			value="Elimina Risorsa Page" />
+		<put-attribute name="title" value="Elimina Risorsa Page" />
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_elimina-risorsa.jsp" />
 	</definition>
@@ -123,7 +127,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_cerca-disponibilita.jsp" />
 	</definition>
-	
+
 	<!-- Aggiungi Prenotazione Page -->
 	<definition name="aggiungiPrenotazionePage"
 		extends="baseuser.definition">
@@ -132,8 +136,8 @@
 		<put-attribute name="body"
 			value="/WEB-INF/bodyfragments/_aggiungi-prenotazione.jsp" />
 	</definition>
-	
-		<!-- Rimuovi Prenotazione Page -->
+
+	<!-- Rimuovi Prenotazione Page -->
 	<definition name="rimuoviPrenotazionePage"
 		extends="baseuser.definition">
 		<put-attribute name="title"

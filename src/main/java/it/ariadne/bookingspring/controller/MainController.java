@@ -96,6 +96,11 @@ public class MainController {
 	public String risorsePage(Model model) {
 		return "risorsePage";
 	}
+	
+	@RequestMapping(value = { "/user/risorse" }, method = RequestMethod.GET)
+	public String risorsePageUser(Model model) {
+		return "risorseUserPage";
+	}
 
 	@RequestMapping(value = { "/admin/aggiungi-risorsa" }, method = RequestMethod.GET)
 	public String aggiungiRisorsaPage(Model model) {
@@ -150,6 +155,18 @@ public class MainController {
 	@ResponseBody
 	@RequestMapping(value = { "/admin/getrisorselist" }, method = RequestMethod.GET)
 	public TableResponse ritornaListaRisorse() {
+		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
+		tableResponse.setDraw(0);
+		tableResponse.setData(all);
+		tableResponse.setRecordsFiltered(all.size());
+		tableResponse.setRecordsTotal(all.size());
+
+		return tableResponse;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = { "/user/getrisorselistuser" }, method = RequestMethod.GET)
+	public TableResponse ritornaListaRisorseUser() {
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		tableResponse.setDraw(0);
 		tableResponse.setData(all);
@@ -353,11 +370,6 @@ public class MainController {
 		}
 
 	}
-
-	/*
-	 * private boolean getDisponibilita(DateTime inizio, DateTime fine) { Interval
-	 * intervallo = new Interval(inizio,fine); }
-	 */
 
 	@RequestMapping(value = { "/user/aggiungi-prenotazione-DB" }, method = RequestMethod.POST)
 	public String aggiungiPrenotazioneDB(HttpServletRequest request, Model model, Principal principal) {
