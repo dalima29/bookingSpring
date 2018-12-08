@@ -73,10 +73,34 @@
 															"data" : "nomeP"
 														},
 														{
-															"data" : "inizio"
+															"data" : "inizio",
+															"render" : function(
+																	data, type,
+																	row) {
+																var x = new Date(
+																		data);
+																return new Date(
+																		x
+																				.getTime()
+																				- (x
+																						.getTimezoneOffset() * 60000))
+																		.toJSON();
+															}
 														},
 														{
-															"data" : "fine"
+															"data" : "fine",
+															"render" : function(
+																	data, type,
+																	row) {
+																var x = new Date(
+																		data);
+																return new Date(
+																		x
+																				.getTime()
+																				- (x
+																						.getTimezoneOffset() * 60000))
+																		.toJSON();
+															}
 														},
 														{
 															"defaultContent" : '<a href="${pageContext.request.contextPath}/user/rimuovi-prenotazione"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'

@@ -55,9 +55,17 @@
 				}, {
 					"data" : "nomeP"
 				}, {
-					"data" : "inizio"
+					"data" : "inizio",
+					"render": function ( data, type, row ) {
+						var x= new Date(data);
+						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+		                }
 				}, {
-					"data" : "fine"
+					"data" : "fine",
+					"render": function ( data, type, row ) {
+						var x= new Date(data);
+						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+		                }
 				}, {
 					"data" : "appUser"
 				} ]
