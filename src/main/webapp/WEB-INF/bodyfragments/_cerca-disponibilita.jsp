@@ -20,28 +20,24 @@
 					<div class="panel-heading">Cerca disponibilità</div>
 					<div class="panel-body">
 						<div class="row">
-						<h3><font color="red"><b>${erroreRisNonEsiste}</b></font></h3>
-						<h3><font color="red"><b>${erroreDataNonDisp}</b></font></h3>
+							<h3>
+								<font color="red"><b>${erroreRisNonEsiste}</b></font>
+							</h3>
+							<h3>
+								<font color="red"><b>${erroreDataNonDisp}</b></font>
+							</h3>
 							<div class="col-lg-12">
 								<form role="form" method="POST"
 									action="${pageContext.request.contextPath}/user/cerca-disponibilita-DB">
-									<!-- <div class="form-group">
-										<label>Tipo Risorsa</label> <select id="tipo" name="tipo" class="form-control"
-											required>
-											<option disabled selected value>seleziona tipo
-												risorsa</option>
-											<option>Aula</option>
-											<option>Macchina</option>
-											<option>Portatile</option>
-										</select>
-									</div> -->
 									<div class="form-group">
 										<label>Data inizio ricerca</label> <input class="form-control"
-											type="datetime-local" id="inizio" name="inizio" required>
+											type="datetime-local" id="inizio" name="inizio"
+											min='2018-12-01T00:00' required>
 									</div>
 									<div class="form-group">
 										<label>Data fine ricerca</label> <input id="fine" name="fine"
-											class="form-control" type="datetime-local" required>
+											class="form-control" type="datetime-local" 
+											min='2018-12-01T00:00' required>
 									</div>
 									<div class="form-group">
 										<label>Id Risorsa</label> <input id="idR" name="idR"
@@ -68,5 +64,21 @@
 		<!-- /.row -->
 	</div>
 	<!-- /#page-wrapper -->
+	<script>
+		var today = new Date();
+		var dd = today.getDate();
+		var mm = today.getMonth() + 1; //January is 0!
+		var yyyy = today.getFullYear();
+		if (dd < 10) {
+			dd = '0' + dd
+		}
+		if (mm < 10) {
+			mm = '0' + mm
+		}
+
+		today = yyyy + '-' + mm + '-' + dd + "T00:00";
+		document.getElementById("inizio").setAttribute("min", today);
+		document.getElementById("fine").setAttribute("min", today);
+	</script>
 </body>
 </html>
