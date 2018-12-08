@@ -21,7 +21,8 @@
 					<div class="panel-body">
 						<div>
 
-							<span><a href="${pageContext.request.contextPath}/user/aggiungi-prenotazione"><button
+							<span><a
+								href="${pageContext.request.contextPath}/user/aggiungi-prenotazione"><button
 										type="button" class="btn btn-default btn-circle">
 										<i class="fa fa-plus"></i>
 									</button></a></span> <span>Aggiungi prenotazione</span>
@@ -40,41 +41,6 @@
 									<th></th>
 								</tr>
 							</thead>
-<!--  							<tbody>
-								<tr class="odd gradeX">
-									<td align="center">Macchina</td>
-									<td align="center">Toyota Yaris</td>
-									<td align="center">Pippo</td>
-									<td align="center">29-11-2021 09:00</td>
-									<td align="center">29-11-2021 09:00</td>
-									<td align="center"><button type="button"
-											class="btn btn-default btn-circle">
-											<i class="fa fa-trash-o"></i>
-										</button></td>
-								</tr>
-								<tr class="gradeC">
-									<td align="center">Portatile</td>
-									<td align="center">Lenovo k5</td>
-									<td align="center">Pluto</td>
-									<td align="center">11-11-2011 10:00</td>
-									<td align="center">12-11-2011 10:00</td>
-									<td align="center"><button type="button"
-											class="btn btn-default btn-circle">
-											<i class="fa fa-trash-o"></i>
-										</button></td>
-								</tr>
-								<tr class="gradeU">
-									<td align="center">Aula</td>
-									<td align="center">A5</td>
-									<td align="center">Topolino</td>
-									<td align="center">05-12-2018 10:00</td>
-									<td align="center">05-12-2018 12:00</td>
-									<td align="center"><button type="button"
-											class="btn btn-default btn-circle">
-											<i class="fa fa-trash-o"></i>
-										</button></td>
-								</tr>
-							</tbody>-->
 						</table>
 						<!-- /.table-responsive -->
 					</div>
@@ -86,18 +52,8 @@
 		</div>
 		<!-- /.row -->
 	</div>
-	<!-- /#page-wrapper -->
-		<script src="../vendor/jquery/jquery.min.js"></script>
 
-	<!-- DataTables JavaScript -->
-	<script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-	<script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-	<script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="../dist/js/sb-admin-2.js"></script>
-	
-		<script>
+	<script>
 		$(document)
 				.ready(
 						function() {
@@ -105,7 +61,7 @@
 									.DataTable(
 											{
 												"ajax" : "/user/getprenotazionicorrentilist",
-												
+
 												"columns" : [
 														{
 															"data" : "id"
@@ -124,8 +80,7 @@
 														},
 														{
 															"defaultContent" : '<a href="${pageContext.request.contextPath}/user/rimuovi-prenotazione"><button type="button" class="btn btn-default btn-circle"> <i class="fa fa-trash-o"></i> </button></a>'
-														}
-														]
+														} ]
 
 											});
 

@@ -218,8 +218,10 @@ public class MainController {
 			ps.setRisorsa(p.getRisorsa().getNome());
 			ps.setAppUser(p.getAppUser().getUserName());
 			ps.setNomeP(p.getNomeP());
+			System.out.println(ps.getInizio());
 			prenotazioneStampa.add(ps);
 		}
+		System.out.println(prenotazioneStampa.get(0).getInizio());
 		tableResponsePrenotazione.setData(prenotazioneStampa);
 		return tableResponsePrenotazione;
 	}
