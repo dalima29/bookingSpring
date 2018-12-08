@@ -53,7 +53,7 @@ public class DataInit implements ApplicationRunner {
             String data = d.toString(df);
             DateTime startDate = df.parseDateTime(data);
             p1.setInizio(startDate.toDate());
-            DateTime d2 = new DateTime(2018, 05, 18, 11, 00);
+            DateTime d2 = new DateTime(2018, 05, 18, 10, 59);
         	String data2 = d2.toString(df);
         	DateTime endDate = df.parseDateTime(data2);
         	p1.setFine(endDate.toDate());
@@ -63,11 +63,11 @@ public class DataInit implements ApplicationRunner {
             Prenotazione p2 = new Prenotazione();
             p2.setNomeP("ciccio");
             p2.setRisorsa(r2);
-            DateTime d3 = new DateTime(2018, 05, 18, 9, 00);     
+            DateTime d3 = new DateTime(2018, 05, 18, 11, 00);     
             String data3 = d3.toString(df);
             DateTime startDate3 = df.parseDateTime(data3);
             p2.setInizio(startDate3.toDate());
-            DateTime d4 = new DateTime(2018, 05, 18, 11, 00);
+            DateTime d4 = new DateTime(2018, 05, 18, 12, 59);
         	String data4 = d4.toString(df);
         	DateTime endDate4 = df.parseDateTime(data4);
         	p2.setFine(endDate4.toDate());
@@ -81,7 +81,7 @@ public class DataInit implements ApplicationRunner {
             String data5 = d5.toString(df);
             DateTime startDate5 = df.parseDateTime(data5);
             p3.setInizio(startDate5.toDate());
-            DateTime d6 = new DateTime(2018, 12, 18, 11, 00);
+            DateTime d6 = new DateTime(2018, 12, 18, 10, 59);
         	String data6 = d6.toString(df);
         	DateTime endDate6 = df.parseDateTime(data6);
         	p3.setFine(endDate6.toDate());
