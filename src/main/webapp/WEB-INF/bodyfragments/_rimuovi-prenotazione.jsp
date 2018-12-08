@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 
 <head>
-<title>Rimuovi Prenotazione</title>
+<title>Elimina Prenotazione</title>
 </head>
 <body>
 	<div id="page-wrapper">
@@ -28,8 +28,8 @@
 
 									<div class="form-group">
 										<label>Id prenotazione</label> <input class="form-control"
-											id="id-prenotazione" name="id-prenotazione" type="text"
-											placeholder="Inserisci nome risorsa" required>
+											id="id-prenotazione" name="id-prenotazione" type="number" min="1"
+											placeholder="Inserisci id prenotazione" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Elimina</button>
 									<button type="reset" class="btn btn-default">Annulla</button>

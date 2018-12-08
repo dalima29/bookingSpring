@@ -313,12 +313,16 @@ public class MainController {
 		String errorEliminaPrenotazione = "";
 		Long idP = Long.valueOf(request.getParameter("id-prenotazione"));
 		String utente = principal.getName();
+		
 		if (prenotazioneDAO.existsById(idP)) {
-			if (prenotazioneDAO.findById(idP).get().getAppUser().getUserName().equals(utente)) {
+			DateTime ddtt = new DateTime(prenotazioneDAO.findById(idP).get().getInizio());
+			if (prenotazioneDAO.findById(idP).get().getAppUser().getUserName().equals(utente)
+					&& ddtt.isAfterNow()) {
 				prenotazioneDAO.deleteById(idP);
 				return "prenotazioniInAttoPage";
 			} else {
-				errorEliminaPrenotazione = "La prenotazione non esiste";
+				//è la prenotazione di un altro utente o è in cronologia
+				errorEliminaPrenotazione = "Non puoi rimuovere la prenotazione";
 				model.addAttribute("erroreEliminaPrenotazione", errorEliminaPrenotazione);
 				return "rimuoviPrenotazionePage";
 			}
