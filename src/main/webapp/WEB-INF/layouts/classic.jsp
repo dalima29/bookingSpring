@@ -19,11 +19,6 @@
                  <tiles:insertAttribute name="body" />
              </td>
         </tr>
-<!--        <tr>
-            <td colspan="2">
-                 <tiles:insertAttribute name="footer" />
-            </td>
-        </tr>-->
     </table>
 </body>
 </html>
