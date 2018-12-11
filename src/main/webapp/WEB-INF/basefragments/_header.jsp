@@ -58,7 +58,6 @@
 				<i class="fa fa-caret-down"></i>
 		</a>
 			<ul class="dropdown-menu dropdown-user">
-
 				<li><a href="${pageContext.request.contextPath}/logout"><i
 						class="fa fa-sign-out fa-fw"></i> Logout</a></li>
 			</ul> <!-- /.dropdown-user --></li>

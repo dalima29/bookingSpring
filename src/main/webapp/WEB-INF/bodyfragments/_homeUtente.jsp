@@ -22,7 +22,7 @@
 								<i class="fa fa-history fa-5x"></i>
 							</div>
 							<div class="col-xs-6 text-right">
-								<div class="huge">Prenotazioni correnti!</div>
+								<div class="huge">Prenotazioni correnti</div>
 							</div>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 								<i class="fa fa-th-list fa-5x"></i>
 							</div>
 							<div class="col-xs-6 text-right">
-								<div class="huge">Cronologia prenotazioni!</div>
+								<div class="huge">Cronologia prenotazioni</div>
 							</div>
 						</div>
 					</div>

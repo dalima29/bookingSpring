@@ -33,7 +33,7 @@
 									</div>
 									<div class="form-group">
 										<label>Limite Risorsa</label> <input class="form-control"
-											placeholder="Inserisci numero" type="number" min="1" id="limite"
+											placeholder="Inserisci limite" type="number" min="1" id="limite"
 											name="limite" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Modifica</button>

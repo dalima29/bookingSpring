@@ -19,7 +19,7 @@
 								<i class="fa fa-table fa-5x"></i>
 							</div>
 							<div class="col-xs-6 text-right">
-								<div class="huge">Nuove prenotazioni!</div>
+								<div class="huge">Prenotazioni</div>
 							</div>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 								<i class="fa fa-list fa-5x"></i>
 							</div>
 							<div class="col-xs-6 text-right">
-								<div class="huge">Nuove risorse!</div>
+								<div class="huge">Risorse</div>
 							</div>
 						</div>
 					</div>

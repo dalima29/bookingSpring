@@ -60,11 +60,18 @@
 
 					"render": function ( data, type, row ) {
 						var x= new Date(data);
-		                var monthNames = [
-		                    "January", "February", "March",
-		                    "April", "May", "June", "July",
-		                    "August", "September", "October",
-		                    "November", "December"
+		                var monthNames = ["Gennaio",
+							"Febbraio",
+							"Marzo",
+							"Aprile",
+							"Maggio",
+							"Giugno",
+							"Luglio",
+							"Agosto",
+							"Settembre",
+							"Ottobre",
+							"Novembre",
+							"Dicembre" 
 		                  ];
 		                var day = x.getDate();
 		                var monthIndex = x.getMonth();
@@ -85,11 +92,18 @@
 					"data" : "fine",
 					"render": function ( data, type, row ) {
 						var x= new Date(data);
-		                var monthNames = [
-		                    "January", "February", "March",
-		                    "April", "May", "June", "July",
-		                    "August", "September", "October",
-		                    "November", "December"
+		                var monthNames = ["Gennaio",
+							"Febbraio",
+							"Marzo",
+							"Aprile",
+							"Maggio",
+							"Giugno",
+							"Luglio",
+							"Agosto",
+							"Settembre",
+							"Ottobre",
+							"Novembre",
+							"Dicembre" 
 		                  ];
 		                var day = x.getDate();
 		                var monthIndex = x.getMonth();

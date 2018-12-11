@@ -36,12 +36,12 @@ String error = (String)session.getAttribute("errore");
 									</div>
 									<div class="form-group">
 										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserisci testo" id="name" name="name" value
+											placeholder="Inserisci nome risorsa" id="name" name="name" value
 											="<%=name !=null?name: "" %>"required>
 									</div>
 									<div class="form-group">
 										<label>Limite Risorsa</label> <input class="form-control"
-											placeholder="Inserisci numero" id="limite"
+											placeholder="Inserisci limite" id="limite"
 											name="limite" type="number" min="1" required>
 									</div>
 									<button type="submit" class="btn btn-primary">Aggiungi</button>
