@@ -1,10 +1,8 @@
 package it.ariadne.bookingspring.controller;
 
 import java.security.Principal;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +14,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -154,7 +151,7 @@ public class MainController {
 
 	@ResponseBody
 	@RequestMapping(value = { "/admin/getrisorselist" }, method = RequestMethod.GET)
-	public TableResponse ritornaListaRisorse() {
+	public TableResponse<Risorsa> ritornaListaRisorse() {
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		tableResponse.setDraw(0);
 		tableResponse.setData(all);
@@ -166,7 +163,7 @@ public class MainController {
 	
 	@ResponseBody
 	@RequestMapping(value = { "/user/getrisorselistuser" }, method = RequestMethod.GET)
-	public TableResponse ritornaListaRisorseUser() {
+	public TableResponse<Risorsa> ritornaListaRisorseUser() {
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		tableResponse.setDraw(0);
 		tableResponse.setData(all);
@@ -218,10 +215,8 @@ public class MainController {
 			ps.setRisorsa(p.getRisorsa().getNome());
 			ps.setAppUser(p.getAppUser().getUserName());
 			ps.setNomeP(p.getNomeP());
-			System.out.println(ps.getInizio());
 			prenotazioneStampa.add(ps);
 		}
-		System.out.println(prenotazioneStampa.get(0).getInizio());
 		tableResponsePrenotazione.setData(prenotazioneStampa);
 		return tableResponsePrenotazione;
 	}
@@ -264,7 +259,7 @@ public class MainController {
 		ArrayList<Risorsa> all = (ArrayList<Risorsa>) risorsaDAO.findAll();
 		for (Risorsa ris : all) {
 			if (ris.getNome().equals(r.getNome())) {
-				error = "Non fare il furbo, la risorsa esiste già";
+				error = "La risorsa esiste già";
 			}
 		}
 		if (error.equals("")) {
@@ -299,7 +294,6 @@ public class MainController {
 		String nomeR = (String) request.getParameter("nome-risorsa");
 		String nomeRDB = nomeR.toUpperCase();
 		if (risorsaDAO.existsByNome(nomeRDB)) {
-			System.out.println("111");
 			risorsaDAO.deleteByNome(nomeRDB);
 			return "risorsePage";
 		} else {

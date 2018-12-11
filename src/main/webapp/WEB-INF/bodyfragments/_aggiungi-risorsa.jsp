@@ -4,7 +4,7 @@
 <title>Aggiungi-risorsa</title>
 </head>
 <body>
-<%String name = (String)session.getAttribute("name");
+<%
 String error = (String)session.getAttribute("errore");
 %>
 	<div id="page-wrapper">
@@ -29,15 +29,15 @@ String error = (String)session.getAttribute("errore");
 											name="tipo" id="tipo" required>
 											<option disabled selected value>Seleziona tipo
 												risorsa</option>
-											<option>Aula</option>
-											<option>Macchina</option>
-											<option>Portatile</option>
+											<option>AULA</option>
+											<option>MACCHINA</option>
+											<option>PORTATILE</option>
 										</select>
 									</div>
 									<div class="form-group">
 										<label>Nome Risorsa</label> <input class="form-control"
-											placeholder="Inserisci nome risorsa" id="name" name="name" value
-											="<%=name !=null?name: "" %>"required>
+											placeholder="Inserisci nome risorsa" id="name" name="name"
+											required>
 									</div>
 									<div class="form-group">
 										<label>Limite Risorsa</label> <input class="form-control"
