@@ -24,11 +24,11 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>Nome risorsa</th>
-									<th>Nome</th>
-									<th>Inizio</th>
-									<th>Fine</th>
+									<th style="text-align : center">Id</th>
+									<th style="text-align : center">Nome risorsa</th>
+									<th style="text-align : center">Nome</th>
+									<th style="text-align : center">Inizio</th>
+									<th style="text-align : center">Fine</th>
 								</tr>
 							</thead>
 						</table>
@@ -46,16 +46,17 @@
 		$(document).ready(function() {
 			$('#dataTables-example').DataTable({
 				"ajax" : "/user/getcronologialist",
-
 				"columns" : [ {
+					className: "right",
 					"data" : "id"
 				}, {
 					"data" : "risorsa"
 				}, {
+					
 					"data" : "nomeP"
+
 				}, {
 					"data" : "inizio",
-
 					"render": function ( data, type, row ) {
 						var x= new Date(data);
 						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
@@ -72,5 +73,18 @@
 
 		});
 	</script>
+	        <style>
+            .left {
+                text-align: left;
+            }
+
+            .right {
+                text-align: right;
+            }
+
+            .center {
+                text-align: center;
+            }
+        </style>
 </body>
 </html>

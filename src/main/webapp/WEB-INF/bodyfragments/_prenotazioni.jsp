@@ -23,12 +23,12 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>Nome risorsa</th>
-									<th>Nome</th>
-									<th>Inizio</th>
-									<th>Fine</th>
-									<th>Nome utente</th>
+									<th style="text-align : center">Id</th>
+									<th style="text-align : center">Nome risorsa</th>
+									<th style="text-align : center">Nome</th>
+									<th style="text-align : center">Inizio</th>
+									<th style="text-align : center">Fine</th>
+									<th style="text-align : center">Nome utente</th>
 								</tr>
 						</table>
 						<!-- /.table-responsive -->
@@ -49,6 +49,7 @@
 				"ajax" : "/admin/getprenotazionilist",
 
 				"columns" : [ {
+					className: "right",
 					"data" : "id"
 				}, {
 					"data" : "risorsa"
@@ -74,4 +75,17 @@
 
 		});
 	</script>
+		<style>
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+</style>
 </body>

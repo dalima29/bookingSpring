@@ -33,11 +33,11 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>Nome risorsa</th>
-									<th>Nome</th>
-									<th>Inizio</th>
-									<th>Fine</th>
+									<th style="text-align : center">Id</th>
+									<th style="text-align : center">Nome risorsa</th>
+									<th style="text-align : center">Nome</th>
+									<th style="text-align : center">Inizio</th>
+									<th style="text-align : center">Fine</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -64,6 +64,7 @@
 
 												"columns" : [
 														{
+															className: "right",
 															"data" : "id"
 														},
 														{
@@ -110,5 +111,19 @@
 
 						});
 	</script>
+
+	<style>
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+</style>
 </body>
 </html>

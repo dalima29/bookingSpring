@@ -24,10 +24,10 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th>Id</th>
-									<th>Limite</th>
-									<th>Nome</th>
-									<th>Risorsa</th>
+									<th style="text-align : center">Id</th>
+									<th style="text-align : center">Limite</th>
+									<th style="text-align : center">Nome</th>
+									<th style="text-align : center">Risorsa</th>
 								</tr>
 							</thead>
 						</table>
@@ -47,8 +47,10 @@
 			$('#dataTables-example').DataTable({
 				"ajax" : "/user/getrisorselistuser",
 				"columns" : [ {
+					className: "right",
 					"data" : "id"
 				}, {
+					className: "right",
 					"data" : "limite"
 				}, {
 					"data" : "nome"
@@ -60,4 +62,17 @@
 
 		});
 	</script>
+		<style>
+.left {
+	text-align: left;
+}
+
+.right {
+	text-align: right;
+}
+
+.center {
+	text-align: center;
+}
+</style>
 </body>
