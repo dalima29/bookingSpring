@@ -57,16 +57,55 @@
 					"data" : "nomeP"
 				}, {
 					"data" : "inizio",
+
 					"render": function ( data, type, row ) {
 						var x= new Date(data);
-						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+		                var monthNames = [
+		                    "January", "February", "March",
+		                    "April", "May", "June", "July",
+		                    "August", "September", "October",
+		                    "November", "December"
+		                  ];
+		                var day = x.getDate();
+		                var monthIndex = x.getMonth();
+		                var year = x.getFullYear();
+		                var ore = x.getHours();
+		                var minuti = x.getMinutes();
+		                if(ore<10) {
+		                	ore = '0'+ore;
 		                }
+		                if(minuti<10) {
+		                	minuti = '0'+minuti;
+		                }
+		                
+		                return year + ' ' + monthNames[monthIndex] + ' ' + day + ' '+ ore + ':'+minuti;
+		                
+					}
 				}, {
 					"data" : "fine",
 					"render": function ( data, type, row ) {
 						var x= new Date(data);
-						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
+		                var monthNames = [
+		                    "January", "February", "March",
+		                    "April", "May", "June", "July",
+		                    "August", "September", "October",
+		                    "November", "December"
+		                  ];
+		                var day = x.getDate();
+		                var monthIndex = x.getMonth();
+		                var year = x.getFullYear();
+		                var ore = x.getHours();
+		                var minuti = x.getMinutes();
+		                if(ore<10) {
+		                	ore = '0'+ore;
 		                }
+		                if(minuti<10) {
+		                	minuti = '0'+minuti;
+		                }
+		                
+		                return year + ' ' + monthNames[monthIndex] + ' ' + day + ' '+ ore + ':'+minuti;
+		                
+					}
 				}, {
 					"data" : "appUser"
 				} ]

@@ -24,11 +24,11 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th style="text-align : center">Id</th>
-									<th style="text-align : center">Nome risorsa</th>
-									<th style="text-align : center">Nome</th>
-									<th style="text-align : center">Inizio</th>
-									<th style="text-align : center">Fine</th>
+									<th style="text-align: center">Id</th>
+									<th style="text-align: center">Nome risorsa</th>
+									<th style="text-align: center">Nome</th>
+									<th style="text-align: center">Inizio</th>
+									<th style="text-align: center">Fine</th>
 								</tr>
 							</thead>
 						</table>
@@ -43,48 +43,145 @@
 		<!-- /.row -->
 	</div>
 	<script>
-		$(document).ready(function() {
-			$('#dataTables-example').DataTable({
-				"ajax" : "/user/getcronologialist",
-				"columns" : [ {
-					className: "right",
-					"data" : "id"
-				}, {
-					"data" : "risorsa"
-				}, {
-					
-					"data" : "nomeP"
+		$(document)
+				.ready(
+						function() {
+							$('#dataTables-example')
+									.DataTable(
+											{
+												"ajax" : "/user/getcronologialist",
+												"columns" : [
+														{
+															className : "right",
+															"data" : "id"
+														},
+														{
+															"data" : "risorsa"
+														},
+														{
 
-				}, {
-					"data" : "inizio",
-					"render": function ( data, type, row ) {
-						var x= new Date(data);
-						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
-		                }
-				}, {
-					"data" : "fine",
-					"render": function ( data, type, row ) {
-						var x= new Date(data);
-						return new Date(x.getTime() - (x.getTimezoneOffset() * 60000)).toJSON();
-		                }
-				} ]
+															"data" : "nomeP"
 
-			});
+														},
+														{
+															"data" : "inizio",
+															"render" : function(
+																	data, type,
+																	row) {
+																var x = new Date(
+																		data);
+																var monthNames = [
+																		"January",
+																		"February",
+																		"March",
+																		"April",
+																		"May",
+																		"June",
+																		"July",
+																		"August",
+																		"September",
+																		"October",
+																		"November",
+																		"December" ];
+																var day = x
+																		.getDate();
+																var monthIndex = x
+																		.getMonth();
+																var year = x
+																		.getFullYear();
+																var ore = x
+																		.getHours();
+																var minuti = x
+																		.getMinutes();
+																if (ore < 10) {
+																	ore = '0'
+																			+ ore;
+																}
+																if (minuti < 10) {
+																	minuti = '0'
+																			+ minuti;
+																}
 
-		});
+																return year
+																		+ ' '
+																		+ monthNames[monthIndex]
+																		+ ' '
+																		+ day
+																		+ ' '
+																		+ ore
+																		+ ':'
+																		+ minuti;
+
+															}
+														},
+														{
+															"data" : "fine",
+															"render" : function(
+																	data, type,
+																	row) {
+																var x = new Date(
+																		data);
+																var monthNames = [
+																		"January",
+																		"February",
+																		"March",
+																		"April",
+																		"May",
+																		"June",
+																		"July",
+																		"August",
+																		"September",
+																		"October",
+																		"November",
+																		"December" ];
+																var day = x
+																		.getDate();
+																var monthIndex = x
+																		.getMonth();
+																var year = x
+																		.getFullYear();
+																var ore = x
+																		.getHours();
+																var minuti = x
+																		.getMinutes();
+																if (ore < 10) {
+																	ore = '0'
+																			+ ore;
+																}
+																if (minuti < 10) {
+																	minuti = '0'
+																			+ minuti;
+																}
+
+																return year
+																		+ ' '
+																		+ monthNames[monthIndex]
+																		+ ' '
+																		+ day
+																		+ ' '
+																		+ ore
+																		+ ':'
+																		+ minuti;
+
+															}
+														} ]
+
+											});
+
+						});
 	</script>
-	        <style>
-            .left {
-                text-align: left;
-            }
+	<style>
+.left {
+	text-align: left;
+}
 
-            .right {
-                text-align: right;
-            }
+.right {
+	text-align: right;
+}
 
-            .center {
-                text-align: center;
-            }
-        </style>
+.center {
+	text-align: center;
+}
+</style>
 </body>
 </html>

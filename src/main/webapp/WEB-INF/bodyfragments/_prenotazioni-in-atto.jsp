@@ -33,11 +33,11 @@
 							id="dataTables-example">
 							<thead>
 								<tr>
-									<th style="text-align : center">Id</th>
-									<th style="text-align : center">Nome risorsa</th>
-									<th style="text-align : center">Nome</th>
-									<th style="text-align : center">Inizio</th>
-									<th style="text-align : center">Fine</th>
+									<th style="text-align: center">Id</th>
+									<th style="text-align: center">Nome risorsa</th>
+									<th style="text-align: center">Nome</th>
+									<th style="text-align: center">Inizio</th>
+									<th style="text-align: center">Fine</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -64,7 +64,7 @@
 
 												"columns" : [
 														{
-															className: "right",
+															className : "right",
 															"data" : "id"
 														},
 														{
@@ -80,12 +80,48 @@
 																	row) {
 																var x = new Date(
 																		data);
-																return new Date(
-																		x
-																				.getTime()
-																				- (x
-																						.getTimezoneOffset() * 60000))
-																		.toJSON();
+																var monthNames = [
+																		"January",
+																		"February",
+																		"March",
+																		"April",
+																		"May",
+																		"June",
+																		"July",
+																		"August",
+																		"September",
+																		"October",
+																		"November",
+																		"December" ];
+																var day = x
+																		.getDate();
+																var monthIndex = x
+																		.getMonth();
+																var year = x
+																		.getFullYear();
+																var ore = x
+																		.getHours();
+																var minuti = x
+																		.getMinutes();
+																if (ore < 10) {
+																	ore = '0'
+																			+ ore;
+																}
+																if (minuti < 10) {
+																	minuti = '0'
+																			+ minuti;
+																}
+
+																return year
+																		+ ' '
+																		+ monthNames[monthIndex]
+																		+ ' '
+																		+ day
+																		+ ' '
+																		+ ore
+																		+ ':'
+																		+ minuti;
+
 															}
 														},
 														{
@@ -95,12 +131,48 @@
 																	row) {
 																var x = new Date(
 																		data);
-																return new Date(
-																		x
-																				.getTime()
-																				- (x
-																						.getTimezoneOffset() * 60000))
-																		.toJSON();
+																var monthNames = [
+																		"January",
+																		"February",
+																		"March",
+																		"April",
+																		"May",
+																		"June",
+																		"July",
+																		"August",
+																		"September",
+																		"October",
+																		"November",
+																		"December" ];
+																var day = x
+																		.getDate();
+																var monthIndex = x
+																		.getMonth();
+																var year = x
+																		.getFullYear();
+																var ore = x
+																		.getHours();
+																var minuti = x
+																		.getMinutes();
+																if (ore < 10) {
+																	ore = '0'
+																			+ ore;
+																}
+																if (minuti < 10) {
+																	minuti = '0'
+																			+ minuti;
+																}
+
+																return year
+																		+ ' '
+																		+ monthNames[monthIndex]
+																		+ ' '
+																		+ day
+																		+ ' '
+																		+ ore
+																		+ ':'
+																		+ minuti;
+
 															}
 														},
 														{
