@@ -355,12 +355,12 @@ public class MainController {
 				if (dataDisp) {
 					DateTime primaDataDisp = new DateTime(dtinizioR);
 					DateTimeFormatter df = DateTimeFormat.forPattern("dd-MM-yyyy HH:mm");
-					errorRisNonEsiste = "La prima disponibile è " + primaDataDisp.toString(df);
+					errorRisNonEsiste = "La prima data disponibile è " + primaDataDisp.toString(df);
 					model.addAttribute("erroreRisNonEsiste", errorRisNonEsiste);
 					return "aggiungiPrenotazionePage";
 				}
 			} while (dtinizioR.plus(periodo).isBefore(dtfineR));
-			errorRisNonEsiste = "non sono disponibili date";
+			errorRisNonEsiste = "Non ci sono date disponibili";
 			model.addAttribute("erroreRisNonEsiste", errorRisNonEsiste);
 			return "cercaDisponibilitaPage";
 		} else {
