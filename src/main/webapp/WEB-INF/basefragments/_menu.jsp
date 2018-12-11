@@ -11,8 +11,6 @@
 						class="fa fa-table fa-fw"></i> Prenotazioni</a></li>
 				<li><a href="${pageContext.request.contextPath}/admin/aggiungi-risorsa"><i
 						class="fa fa-edit fa-fw"></i> Aggiungi Risorsa</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/utenti"><i class="fa fa-users fa-fw"></i>
-						Utenti</a></li>
 			</ul>
 		</div>
 		<!-- /.sidebar-collapse -->
