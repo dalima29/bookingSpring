@@ -75,6 +75,7 @@
 							<br> Username/pass:
 							<ul>
 								<li>dbuser1/123</li>
+								<li>dbuser2/123</li>
 								<li>dbadmin1/123</li>
 							</ul>
 						</div>
