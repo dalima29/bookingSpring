@@ -81,6 +81,13 @@ public class MainController {
 
 	@RequestMapping(value = { "/admin/home" }, method = RequestMethod.GET)
 	public String homePage(Model model) {
+		ArrayList<String> arr= appUserDAO.trovaUtentiNonAdmin("ROLE_USER");
+		for (String s : arr) {
+			System.out.println(s);
+		}
+		ArrayList<Long> stringa = risorsaDAO.risorsaPiuPrenotata();
+		System.out.println(stringa);
+		//System.out.println(Prenotazione.class.getName());
 		return "homePage";
 	}
 

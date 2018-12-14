@@ -20,6 +20,7 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "Id", nullable = false)
+    
     private Long id;
  
     @ManyToOne(fetch = FetchType.LAZY)

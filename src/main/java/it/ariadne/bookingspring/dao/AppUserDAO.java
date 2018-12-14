@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import it.ariadne.bookingspring.entity.AppUser;
+import it.ariadne.bookingspring.entity.Prenotazione;
 import it.ariadne.bookingspring.entity.UserRole;
 import it.ariadne.bookingspring.entity.AppRole;
 
@@ -38,10 +39,8 @@ public class AppUserDAO {
     
     public ArrayList<String> trovaUtentiNonAdmin(String nomeRuolo) {
     	try {
-    		String sql = "Select au.userName from " + AppUser.class.getName() + " au " +
-    	"JOIN "+ UserRole.class.getName() + " ur "//
-    				+"Where au.userId = ur.appUser.userId AND ur.appRole.roleName = :nomeRuolo ";
-    		
+    		String sql = "Select ur.appUser.userName from " + UserRole.class.getName() + " ur "
+    				+ "where ur.appRole.roleName = :nomeRuolo";
     		Query query = entityManager.createQuery(sql, String.class);
     		query.setParameter("nomeRuolo", nomeRuolo);
     		return (ArrayList<String>) query.getResultList();
@@ -49,5 +48,6 @@ public class AppUserDAO {
             return null;
         }
     }
+
  
 }

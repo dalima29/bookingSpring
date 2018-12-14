@@ -3,6 +3,7 @@ package it.ariadne.bookingspring.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 
@@ -26,7 +27,5 @@ public class AppRoleDAO {
         query.setParameter("userId", userId);
         return query.getResultList();
     }
-    
-
  
 }
